@@ -91,7 +91,7 @@ class _LandingState extends State<Landing> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline3,
             ),
           ],
         ),
