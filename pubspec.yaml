@@ -1,5 +1,5 @@
 name: communique
-description: A new Flutter project.
+description: Write & share email messages for change. Let the collective voice rise.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   firebase_auth:
+  responsive_widgets:
   google_sign_in: ^4.1.0
 
   # The following adds the Cupertino Icons font to your application.
