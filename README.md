@@ -1,6 +1,6 @@
 # **communique**
 
-A web platform that enables sharing & generation of email message templates via `mailto` links.
+A web platform that enables sharing, browsing & generation of email message templates via `mailto` links.
 Let the collective voice rise.
 
 ## Stack
