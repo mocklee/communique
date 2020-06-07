@@ -22,7 +22,7 @@ class Communique extends StatelessWidget {
       ),
       home: new Landing(
         title: 'communique',
-        subtitle: 'Let the collective voice rise.',
+        subtitle: 'Write & share email templates!',
       ),
     );
   }
