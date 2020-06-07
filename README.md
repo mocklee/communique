@@ -1,5 +1,7 @@
 # **communique**
 
+**[work-in-progress]** 
+
 A web platform that enables sharing, browsing & generation of email message templates via `mailto` links.
 Let the collective voice rise.
 
