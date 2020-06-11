@@ -50,6 +50,7 @@ class _LandingState extends State<Landing> {
       ),
       body: Container(
         alignment: Alignment.topLeft,
+        margin: EdgeInsets.all(20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
