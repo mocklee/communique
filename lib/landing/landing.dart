@@ -1,6 +1,7 @@
 library landing;
 
 import 'package:flutter/material.dart';
+import './hero/introCard.dart';
 
 class Landing extends StatefulWidget {
   Landing({Key key, this.title, this.subtitle}) : super(key: key);
@@ -48,23 +49,20 @@ class _LandingState extends State<Landing> {
           ],
         ),
       ),
-      body: Container(
-        alignment: Alignment.topLeft,
-        margin: EdgeInsets.all(20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline3,
-            ),
-          ],
-        ),
-      ),
+      body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+        return Container(
+          height: 300,
+          margin: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              new IntroCard(),
+            ],
+          ),
+        );
+      }),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
