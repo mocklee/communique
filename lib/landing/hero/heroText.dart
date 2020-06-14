@@ -6,10 +6,26 @@ class HeroText extends StatefulWidget {
 }
 
 class _HeroTextState extends State<HeroText> {
-  double opacity1 = 1;
-  double opacity2 = 0;
-  double opacity3 = 0;
+  double opacity = 1;
   int opacityStep = 1;
+
+  // initialize on first step
+  String stepTitle = 'Step 1:\n';
+  String stepDescription =
+      'Let the recepient know who you are! Fill in your details below.';
+  List step1 = [
+    'Step 1:\n',
+    'Let the recepient know who you are! Fill in your details below.'
+  ];
+  List step2 = [
+    'Step 2:\n',
+    'Find your cause by searching through submitted topics, or add a new one!'
+  ];
+  List step3 = [
+    'Step 3:\n',
+    'Tap on a card to open the email. Add your voice by hitting the “SEND” button.'
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -22,33 +38,39 @@ class _HeroTextState extends State<HeroText> {
         switch (opacityStep) {
           case 1:
             {
-              opacity1 = 0;
-              Future.delayed(Duration(milliseconds: 1200), () {
+              opacity = 0;
+              Future.delayed(Duration(milliseconds: 1500), () {
                 setState(() {
-                  opacity2 = 1;
+                  opacity = 1;
                   opacityStep = 2;
+                  stepTitle = step2[0];
+                  stepDescription = step2[1];
                 });
               });
               continue recursion;
             }
           case 2:
             {
-              opacity2 = 0;
+              opacity = 0;
               Future.delayed(Duration(milliseconds: 1200), () {
                 setState(() {
-                  opacity3 = 1;
+                  opacity = 1;
                   opacityStep = 3;
+                  stepTitle = step3[0];
+                  stepDescription = step3[1];
                 });
               });
               continue recursion;
             }
           case 3:
             {
-              opacity3 = 0;
+              opacity = 0;
               Future.delayed(Duration(milliseconds: 1200), () {
                 setState(() {
-                  opacity1 = 1;
+                  opacity = 1;
                   opacityStep = 1;
+                  stepTitle = step1[0];
+                  stepDescription = step1[1];
                 });
               });
               continue recursion;
@@ -65,7 +87,7 @@ class _HeroTextState extends State<HeroText> {
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
       AnimatedOpacity(
-        opacity: opacity1,
+        opacity: opacity,
         duration: Duration(milliseconds: 1500),
         curve: Curves.easeOutCirc,
         child: RichText(
@@ -74,70 +96,20 @@ class _HeroTextState extends State<HeroText> {
                 style: DefaultTextStyle.of(context).style,
                 children: <TextSpan>[
                   TextSpan(
-                      text: 'Step 1:\n',
+                      text: stepTitle,
                       style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
                           fontStyle: FontStyle.italic,
                           letterSpacing: 0.5)),
                   TextSpan(
-                      text:
-                          'Let the recepient know who you are! Fill in your details below.',
+                      text: stepDescription,
                       style: TextStyle(
                           fontSize: 11,
                           fontStyle: FontStyle.italic,
                           letterSpacing: 0.4))
                 ])),
       ),
-      AnimatedOpacity(
-        opacity: opacity2,
-        duration: Duration(milliseconds: 1500),
-        curve: Curves.easeOutCirc,
-        child: RichText(
-            textAlign: TextAlign.left,
-            text: TextSpan(
-                style: DefaultTextStyle.of(context).style,
-                children: <TextSpan>[
-                  TextSpan(
-                      text: 'Step 2:\n',
-                      style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 0.5)),
-                  TextSpan(
-                      text:
-                          'Find your cause by searching through submitted topics, or add a new one!',
-                      style: TextStyle(
-                          fontSize: 11,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 0.4))
-                ])),
-      ),
-      AnimatedOpacity(
-          opacity: opacity3,
-          duration: Duration(milliseconds: 1500),
-          curve: Curves.easeOutCirc,
-          child: RichText(
-              textAlign: TextAlign.left,
-              text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Step 3:\n',
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic,
-                            letterSpacing: 0.5)),
-                    TextSpan(
-                        text:
-                            'Tap on a card to open the email. Add your voice by hitting the “SEND” button.',
-                        style: TextStyle(
-                            fontSize: 11,
-                            fontStyle: FontStyle.italic,
-                            letterSpacing: 0.4))
-                  ]))),
     ]);
   }
 }
