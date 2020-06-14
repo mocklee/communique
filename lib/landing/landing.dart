@@ -1,7 +1,9 @@
 library landing;
 
 import 'package:flutter/material.dart';
+
 import './hero/introCard.dart';
+import './hero/repCard.dart';
 
 class Landing extends StatefulWidget {
   Landing({Key key, this.title, this.subtitle}) : super(key: key);
@@ -55,10 +57,11 @@ class _LandingState extends State<Landing> {
           height: 300,
           margin: EdgeInsets.all(10),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               new IntroCard(),
+              new RepCard(),
             ],
           ),
         );

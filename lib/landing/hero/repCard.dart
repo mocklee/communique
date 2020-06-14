@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class IntroCard extends StatelessWidget {
-  IntroCard({Key key}) : super(key: key);
+class RepCard extends StatelessWidget {
+  RepCard({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,17 +11,15 @@ class IntroCard extends StatelessWidget {
             height: 400,
             child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
               ListTile(
+                leading: Icon(Icons.domain),
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 12, vertical: 0),
-                title: Text('Let the collective voice rise.',
+                title: Text('Contact your representative.',
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                subtitle: Text('Find the words to support your cause',
-                    style: TextStyle(fontSize: 11)),
               ),
               Padding(
                 padding: EdgeInsets.all(20),
-                child: Text('Step 1'),
               )
             ])));
   }
