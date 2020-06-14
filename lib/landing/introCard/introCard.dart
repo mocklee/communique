@@ -1,4 +1,5 @@
 import 'package:communique/landing/introCard/heroText.dart';
+import 'package:communique/landing/introCard/infoInput.dart';
 import 'package:flutter/material.dart';
 
 class IntroCard extends StatelessWidget {
@@ -22,6 +23,15 @@ class IntroCard extends StatelessWidget {
               Padding(
                   padding: EdgeInsets.all(20),
                   child: Container(width: 300, child: new HeroText())),
+              SizedBox(
+                  width: 260,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      InfoInput(),
+                    ],
+                  ))
             ])));
   }
 }
