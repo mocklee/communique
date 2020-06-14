@@ -2,8 +2,8 @@ library landing;
 
 import 'package:flutter/material.dart';
 
-import './hero/introCard.dart';
-import './hero/repCard.dart';
+import './introCard.dart';
+import './repCard.dart';
 
 class Landing extends StatefulWidget {
   Landing({Key key, this.title, this.subtitle}) : super(key: key);
@@ -52,6 +52,7 @@ class _LandingState extends State<Landing> {
         ),
       ),
       body: LayoutBuilder(
+          // BoxConstraints available for responsiveness
           builder: (BuildContext context, BoxConstraints constraints) {
         return Container(
           height: 375,
