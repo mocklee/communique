@@ -96,29 +96,28 @@ class _HeroTextState extends State<HeroText> {
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
       AnimatedOpacity(
-        opacity: opacity,
-        duration: Duration(milliseconds: 1500),
-        curve: Curves.easeOutCirc,
-        child: RichText(
-            textAlign: TextAlign.left,
-            text: TextSpan(
-                style: DefaultTextStyle.of(context).style,
-                children: <TextSpan>[
-                  TextSpan(
-                      text: stepTitle,
-                      style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 0.5)),
-                  TextSpan(
-                      text: stepDescription,
-                      style: TextStyle(
-                          fontSize: 11,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 0.4))
-                ])),
-      ),
+          opacity: opacity,
+          duration: Duration(milliseconds: 1500),
+          curve: Curves.easeOutCirc,
+          child: RichText(
+              textAlign: TextAlign.left,
+              text: TextSpan(
+                  style: DefaultTextStyle.of(context).style,
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: stepTitle,
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                            letterSpacing: 0.5)),
+                    TextSpan(
+                        text: stepDescription,
+                        style: TextStyle(
+                            fontSize: 11,
+                            fontStyle: FontStyle.italic,
+                            letterSpacing: 0.4))
+                  ])))
     ]);
   }
 }
