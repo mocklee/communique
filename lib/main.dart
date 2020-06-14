@@ -9,10 +9,10 @@ class Communique extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Communique',
+      title: 'communique',
       theme: ThemeData(
         primaryColor: Colors.teal,
-        primarySwatch: Colors.teal,
+        primarySwatch: Colors.lime,
         brightness: Brightness.dark,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),

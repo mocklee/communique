@@ -54,7 +54,7 @@ class _LandingState extends State<Landing> {
       body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
         return Container(
-          height: 300,
+          height: 375,
           margin: EdgeInsets.all(10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
