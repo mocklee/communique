@@ -16,8 +16,6 @@ class Landing extends StatefulWidget {
 }
 
 class _LandingState extends State<Landing> {
-  int _counter = 0;
-
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -69,7 +67,7 @@ class _LandingState extends State<Landing> {
       }),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: 'New email',
         child: Icon(Icons.add),
       ),
     );
