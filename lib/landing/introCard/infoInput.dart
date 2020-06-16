@@ -22,10 +22,22 @@ class _InfoInputState extends State<InfoInput> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             TextFormField(
-              decoration: InputDecoration(labelText: 'Your full name'),
+              decoration: InputDecoration(
+                labelText: 'Your full name',
+              ),
               validator: (value) {
                 if (value.isEmpty) {
-                  return 'Please enter your name';
+                  return 'Please enter your name.';
+                }
+                return null;
+              },
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                  labelText: 'City, state', labelStyle: TextStyle(height: 1)),
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Let them know where you are!';
                 }
                 return null;
               },
