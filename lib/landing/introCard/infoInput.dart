@@ -50,7 +50,7 @@ class _InfoInputState extends State<InfoInput> {
                       labelText: 'City, state',
                       labelStyle: TextStyle(fontSize: 15),
                       errorStyle: TextStyle(fontSize: 11.5),
-                      helperText: 'This card only stores data on your device.',
+                      helperText: 'This card stores data only on your device.',
                       helperStyle: TextStyle(
                           fontSize: 11.5, fontStyle: FontStyle.italic),
                       isDense: true,
@@ -63,7 +63,7 @@ class _InfoInputState extends State<InfoInput> {
                   },
                 )),
             Container(
-                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 alignment: Alignment.bottomRight,
                 child: SizedBox(
                     height: 30,
