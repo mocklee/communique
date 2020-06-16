@@ -21,7 +21,8 @@ class RepCard extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 14))),
                   Container(
-                      padding: EdgeInsets.only(top: 45, left: 14, right: 10),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 14, vertical: 40),
                       alignment: Alignment.center,
                       child: Text(
                         'If your representative is not found— or you are outside the United States— use the plus button to draft an email template at the bottom right.',

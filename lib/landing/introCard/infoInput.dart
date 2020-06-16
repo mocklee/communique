@@ -6,12 +6,7 @@ class InfoInput extends StatefulWidget {
 }
 
 class _InfoInputState extends State<InfoInput> {
-  static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +36,19 @@ class _InfoInputState extends State<InfoInput> {
                 }
                 return null;
               },
-            )
+            ),
+            Container(
+                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+                alignment: Alignment.bottomRight,
+                child: SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: IconButton(
+                      padding: new EdgeInsets.all(0.0),
+                      icon: Icon(Icons.check, size: 30),
+                      onPressed: () => Scaffold.of(context)
+                          .showSnackBar(SnackBar(content: Text('Pressed'))),
+                    )))
           ],
         ));
   }
