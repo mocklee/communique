@@ -70,6 +70,7 @@ class _InfoInputState extends State<InfoInput> {
                     width: 30,
                     child: IconButton(
                       padding: new EdgeInsets.all(0.0),
+                      tooltip: 'Save',
                       icon: Icon(Icons.check, size: 30),
                       onPressed: () => _validateInfo(),
                     )))
