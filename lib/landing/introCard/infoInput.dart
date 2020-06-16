@@ -28,12 +28,13 @@ class _InfoInputState extends State<InfoInput> {
                   cursorColor: Colors.green[600],
                   textCapitalization: TextCapitalization.words,
                   decoration: InputDecoration(
-                      labelText: 'Your full name',
-                      labelStyle: TextStyle(fontSize: 16),
-                      errorStyle: TextStyle(fontSize: 11.5),
-                      helperText: ' ',
-                      isDense: true,
-                      contentPadding: EdgeInsets.only(bottom: 1)),
+                    labelText: 'Your full name',
+                    labelStyle: TextStyle(fontSize: 16),
+                    errorStyle: TextStyle(fontSize: 11.5),
+                    helperText: ' ',
+                    isDense: true,
+                    contentPadding: EdgeInsets.only(bottom: 1),
+                  ),
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please enter your name.';
@@ -47,14 +48,15 @@ class _InfoInputState extends State<InfoInput> {
                   cursorColor: Colors.green[600],
                   textCapitalization: TextCapitalization.words,
                   decoration: InputDecoration(
-                      labelText: 'City, state',
-                      labelStyle: TextStyle(fontSize: 16),
-                      errorStyle: TextStyle(fontSize: 11.5),
-                      helperText: 'This card stores data only on your device.',
-                      helperStyle: TextStyle(
-                          fontSize: 11.5, fontStyle: FontStyle.italic),
-                      isDense: true,
-                      contentPadding: EdgeInsets.only(bottom: 1)),
+                    labelText: 'City, state',
+                    labelStyle: TextStyle(fontSize: 16),
+                    errorStyle: TextStyle(fontSize: 11.5),
+                    helperText: 'This card stores data only on your device.',
+                    helperStyle:
+                        TextStyle(fontSize: 11.5, fontStyle: FontStyle.italic),
+                    isDense: true,
+                    contentPadding: EdgeInsets.only(bottom: 1),
+                  ),
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Let them know where you are!';
