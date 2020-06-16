@@ -38,10 +38,10 @@ class _HeroTextState extends State<HeroText> {
     // initialize on first step
     stepTitle = widget.step1[0];
     stepDescription = widget.step1[1];
-    changeOpacity();
+    _changeOpacity();
   }
 
-  void changeOpacity() {
+  void _changeOpacity() {
     Future.delayed(Duration(seconds: 6), () {
       setState(() {
         switch (opacityStep) {
@@ -86,7 +86,7 @@ class _HeroTextState extends State<HeroText> {
             }
           recursion:
           case 0:
-            changeOpacity();
+            _changeOpacity();
         }
       });
     });
