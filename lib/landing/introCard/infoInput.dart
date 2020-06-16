@@ -23,17 +23,17 @@ class _InfoInputState extends State<InfoInput> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-                height: 68,
+                height: 65,
                 child: TextFormField(
                   cursorColor: Colors.green[600],
                   textCapitalization: TextCapitalization.words,
                   decoration: InputDecoration(
                       labelText: 'Your full name',
-                      labelStyle: TextStyle(fontSize: 15),
+                      labelStyle: TextStyle(fontSize: 16),
                       errorStyle: TextStyle(fontSize: 11.5),
                       helperText: ' ',
                       isDense: true,
-                      contentPadding: EdgeInsets.symmetric(vertical: 8)),
+                      contentPadding: EdgeInsets.only(bottom: 1)),
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please enter your name.';
@@ -42,19 +42,19 @@ class _InfoInputState extends State<InfoInput> {
                   },
                 )),
             SizedBox(
-                height: 68,
+                height: 65,
                 child: TextFormField(
                   cursorColor: Colors.green[600],
                   textCapitalization: TextCapitalization.words,
                   decoration: InputDecoration(
                       labelText: 'City, state',
-                      labelStyle: TextStyle(fontSize: 15),
+                      labelStyle: TextStyle(fontSize: 16),
                       errorStyle: TextStyle(fontSize: 11.5),
                       helperText: 'This card stores data only on your device.',
                       helperStyle: TextStyle(
                           fontSize: 11.5, fontStyle: FontStyle.italic),
                       isDense: true,
-                      contentPadding: EdgeInsets.symmetric(vertical: 8)),
+                      contentPadding: EdgeInsets.only(bottom: 1)),
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Let them know where you are!';
@@ -63,7 +63,7 @@ class _InfoInputState extends State<InfoInput> {
                   },
                 )),
             Container(
-                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                 alignment: Alignment.bottomRight,
                 child: SizedBox(
                     height: 30,
