@@ -16,6 +16,7 @@ class Communique extends StatelessWidget {
           brightness: Brightness.dark,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
+        // the meat
         home: new Landing(
           title: 'communique',
           subtitle: 'Write & share email templates!',

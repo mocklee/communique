@@ -8,9 +8,18 @@ class InfoInput extends StatefulWidget {
 class _InfoInputState extends State<InfoInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
-  void _validateInfo() {
+  void _handleKeyboardNavigation(RawKeyEvent event) {
+    print("called");
+
+    if (event.runtimeType == RawKeyEvent && (event.logicalKey.keyId == 54)) {
+      print("ENTER Key pressed");
+      //Do something
+    }
+  }
+
+  void _submitInfo() {
     if (_formKey.currentState.validate()) {
-      Scaffold.of(context).showSnackBar(SnackBar(content: Text('Pressed')));
+      Scaffold.of(context).showSnackBar(SnackBar(content: Text('Info saved!')));
     }
   }
 
@@ -23,47 +32,55 @@ class _InfoInputState extends State<InfoInput> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-                height: 65,
-                child: TextFormField(
-                  cursorColor: Colors.green[600],
-                  textCapitalization: TextCapitalization.words,
-                  decoration: InputDecoration(
-                    labelText: 'Your full name',
-                    labelStyle: TextStyle(fontSize: 16),
-                    errorStyle: TextStyle(fontSize: 11.5),
-                    helperText: ' ',
-                    isDense: true,
-                    contentPadding: EdgeInsets.only(bottom: 1),
-                  ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter your name.';
-                    }
-                    return null;
-                  },
-                )),
+              height: 65,
+              child: RawKeyboardListener(
+                  focusNode: FocusNode(),
+                  onKey: (event) => _handleKeyboardNavigation(event),
+                  child: TextFormField(
+                    cursorColor: Colors.green[600],
+                    textCapitalization: TextCapitalization.words,
+                    decoration: InputDecoration(
+                      labelText: 'Your full name',
+                      labelStyle: TextStyle(fontSize: 16),
+                      errorStyle: TextStyle(fontSize: 11.5),
+                      helperText: ' ',
+                      isDense: true,
+                      contentPadding: EdgeInsets.only(bottom: 1),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter your name.';
+                      }
+                      return null;
+                    },
+                  )),
+            ),
             SizedBox(
                 height: 65,
-                child: TextFormField(
-                  cursorColor: Colors.green[600],
-                  textCapitalization: TextCapitalization.words,
-                  decoration: InputDecoration(
-                    labelText: 'City, state',
-                    labelStyle: TextStyle(fontSize: 16),
-                    errorStyle: TextStyle(fontSize: 11.5),
-                    helperText: 'This card stores data only on your device.',
-                    helperStyle:
-                        TextStyle(fontSize: 11.5, fontStyle: FontStyle.italic),
-                    isDense: true,
-                    contentPadding: EdgeInsets.only(bottom: 1),
-                  ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Let them know where you are!';
-                    }
-                    return null;
-                  },
-                )),
+                child: RawKeyboardListener(
+                    focusNode: FocusNode(),
+                    onKey: (event) => _handleKeyboardNavigation(event),
+                    child: TextFormField(
+                      cursorColor: Colors.green[600],
+                      textCapitalization: TextCapitalization.words,
+                      decoration: InputDecoration(
+                        labelText: 'City, state',
+                        labelStyle: TextStyle(fontSize: 16),
+                        errorStyle: TextStyle(fontSize: 11.5),
+                        helperText:
+                            'This card stores data only on your device.',
+                        helperStyle: TextStyle(
+                            fontSize: 11.5, fontStyle: FontStyle.italic),
+                        isDense: true,
+                        contentPadding: EdgeInsets.only(bottom: 1),
+                      ),
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Let them know where you are!';
+                        }
+                        return null;
+                      },
+                    ))),
             Container(
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                 alignment: Alignment.bottomRight,
@@ -74,7 +91,7 @@ class _InfoInputState extends State<InfoInput> {
                       padding: new EdgeInsets.all(0.0),
                       tooltip: 'Save',
                       icon: Icon(Icons.check, size: 30),
-                      onPressed: () => _validateInfo(),
+                      onPressed: () => _submitInfo(),
                     )))
           ],
         ));
