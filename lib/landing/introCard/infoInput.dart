@@ -22,33 +22,48 @@ class _InfoInputState extends State<InfoInput> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            TextFormField(
-              cursorColor: Colors.green[600],
-              textCapitalization: TextCapitalization.words,
-              decoration: InputDecoration(
-                labelText: 'Your full name',
-              ),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter your name.';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              cursorColor: Colors.green[600],
-              textCapitalization: TextCapitalization.words,
-              decoration: InputDecoration(
-                  labelText: 'City, state', labelStyle: TextStyle(height: 1)),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Let them know where you are!';
-                }
-                return null;
-              },
-            ),
+            SizedBox(
+                height: 68,
+                child: TextFormField(
+                  cursorColor: Colors.green[600],
+                  textCapitalization: TextCapitalization.words,
+                  decoration: InputDecoration(
+                      labelText: 'Your full name',
+                      labelStyle: TextStyle(fontSize: 15),
+                      errorStyle: TextStyle(fontSize: 11.5),
+                      helperText: ' ',
+                      isDense: true,
+                      contentPadding: EdgeInsets.symmetric(vertical: 8)),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please enter your name.';
+                    }
+                    return null;
+                  },
+                )),
+            SizedBox(
+                height: 68,
+                child: TextFormField(
+                  cursorColor: Colors.green[600],
+                  textCapitalization: TextCapitalization.words,
+                  decoration: InputDecoration(
+                      labelText: 'City, state',
+                      labelStyle: TextStyle(fontSize: 15),
+                      errorStyle: TextStyle(fontSize: 11.5),
+                      helperText: 'This card only stores data on your device.',
+                      helperStyle: TextStyle(
+                          fontSize: 11.5, fontStyle: FontStyle.italic),
+                      isDense: true,
+                      contentPadding: EdgeInsets.symmetric(vertical: 8)),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Let them know where you are!';
+                    }
+                    return null;
+                  },
+                )),
             Container(
-                padding: EdgeInsets.symmetric(vertical: 32, horizontal: 10),
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 alignment: Alignment.bottomRight,
                 child: SizedBox(
                     height: 30,
