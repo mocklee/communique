@@ -12,7 +12,7 @@ class Communique extends StatelessWidget {
         title: 'communique',
         theme: ThemeData(
           primaryColor: Colors.teal,
-          primarySwatch: Colors.lime,
+          primarySwatch: Colors.teal,
           brightness: Brightness.dark,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),

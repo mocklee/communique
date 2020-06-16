@@ -38,7 +38,7 @@ class _InfoInputState extends State<InfoInput> {
               },
             ),
             Container(
-                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+                padding: EdgeInsets.symmetric(vertical: 32, horizontal: 10),
                 alignment: Alignment.bottomRight,
                 child: SizedBox(
                     height: 30,
