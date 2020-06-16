@@ -23,6 +23,7 @@ class _InfoInputState extends State<InfoInput> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             TextFormField(
+              cursorColor: Colors.green[600],
               textCapitalization: TextCapitalization.words,
               decoration: InputDecoration(
                 labelText: 'Your full name',
@@ -35,6 +36,7 @@ class _InfoInputState extends State<InfoInput> {
               },
             ),
             TextFormField(
+              cursorColor: Colors.green[600],
               textCapitalization: TextCapitalization.words,
               decoration: InputDecoration(
                   labelText: 'City, state', labelStyle: TextStyle(height: 1)),
