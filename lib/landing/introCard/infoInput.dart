@@ -8,6 +8,12 @@ class InfoInput extends StatefulWidget {
 class _InfoInputState extends State<InfoInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
+  void _validateInfo() {
+    if (_formKey.currentState.validate()) {
+      Scaffold.of(context).showSnackBar(SnackBar(content: Text('Pressed')));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -17,6 +23,7 @@ class _InfoInputState extends State<InfoInput> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             TextFormField(
+              textCapitalization: TextCapitalization.words,
               decoration: InputDecoration(
                 labelText: 'Your full name',
               ),
@@ -28,6 +35,7 @@ class _InfoInputState extends State<InfoInput> {
               },
             ),
             TextFormField(
+              textCapitalization: TextCapitalization.words,
               decoration: InputDecoration(
                   labelText: 'City, state', labelStyle: TextStyle(height: 1)),
               validator: (value) {
@@ -46,8 +54,7 @@ class _InfoInputState extends State<InfoInput> {
                     child: IconButton(
                       padding: new EdgeInsets.all(0.0),
                       icon: Icon(Icons.check, size: 30),
-                      onPressed: () => Scaffold.of(context)
-                          .showSnackBar(SnackBar(content: Text('Pressed'))),
+                      onPressed: () => _validateInfo(),
                     )))
           ],
         ));
