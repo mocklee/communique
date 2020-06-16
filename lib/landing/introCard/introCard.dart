@@ -21,7 +21,8 @@ class IntroCard extends StatelessWidget {
                   subtitle: Text('Find the words to support your cause',
                       style: TextStyle(fontSize: 11))),
               Padding(
-                  padding: EdgeInsets.all(25),
+                  padding:
+                      EdgeInsets.only(top: 20, bottom: 30, right: 20, left: 20),
                   child: Container(width: 300, child: new HeroText())),
               SizedBox(
                   width: 260,
