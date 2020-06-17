@@ -36,7 +36,8 @@ class _InfoInputState extends State<InfoInput> {
             SizedBox(
               height: 65,
               child: TextFormField(
-                onFieldSubmitted: (location) => {_saveInfo()},
+                onFieldSubmitted: (location) =>
+                    {_fieldSubmitted = true, _saveInfo()},
                 textInputAction: TextInputAction.next,
                 onChanged: (value) => {
                   setState(() {
@@ -65,7 +66,8 @@ class _InfoInputState extends State<InfoInput> {
             SizedBox(
                 height: 65,
                 child: TextFormField(
-                  onFieldSubmitted: (location) => {_saveInfo()},
+                  onFieldSubmitted: (location) =>
+                      {_fieldSubmitted = true, _saveInfo()},
                   textInputAction: TextInputAction.done,
                   onChanged: (value) => {
                     setState(() {
@@ -92,6 +94,19 @@ class _InfoInputState extends State<InfoInput> {
                     return null;
                   },
                 )),
+            Container(
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                alignment: Alignment.bottomRight,
+                child: SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: IconButton(
+                      padding: new EdgeInsets.all(0.0),
+                      tooltip: 'Save',
+                      icon: Icon(Icons.check, size: 30),
+                      onPressed: () =>
+                          {_fieldSubmitted == false ? _saveInfo() : null},
+                    )))
           ],
         ));
   }
