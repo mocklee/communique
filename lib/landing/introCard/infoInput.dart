@@ -9,14 +9,14 @@ class InfoInput extends StatefulWidget {
 
 class _InfoInputState extends State<InfoInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-  final _nameFocus = FocusNode();
-  final _locationFocus = FocusNode();
   var _inputUpdater = InputUpdater();
 
   String _name, _location;
+  bool _fieldSubmitted = false;
 
   void _saveInfo() {
     if (_formKey.currentState.validate()) {
+      print(_fieldSubmitted);
       // update input values globally
       _inputUpdater.updateName(_name);
       _inputUpdater.updateLocation(_location);
@@ -36,11 +36,13 @@ class _InfoInputState extends State<InfoInput> {
             SizedBox(
               height: 65,
               child: TextFormField(
-                focusNode: _nameFocus,
+                onFieldSubmitted: (location) =>
+                    {_fieldSubmitted = true, _saveInfo()},
                 textInputAction: TextInputAction.next,
                 onChanged: (value) => {
                   setState(() {
                     _name = value;
+                    _fieldSubmitted = false;
                   })
                 },
                 cursorColor: Colors.green[600],
@@ -64,11 +66,13 @@ class _InfoInputState extends State<InfoInput> {
             SizedBox(
                 height: 65,
                 child: TextFormField(
-                  focusNode: _locationFocus,
+                  onFieldSubmitted: (location) =>
+                      {_fieldSubmitted = true, _saveInfo()},
                   textInputAction: TextInputAction.done,
                   onChanged: (value) => {
                     setState(() {
                       _location = value;
+                      _fieldSubmitted = false;
                     })
                   },
                   cursorColor: Colors.green[600],
@@ -100,7 +104,8 @@ class _InfoInputState extends State<InfoInput> {
                       padding: new EdgeInsets.all(0.0),
                       tooltip: 'Save',
                       icon: Icon(Icons.check, size: 30),
-                      onPressed: () => _saveInfo(),
+                      onPressed: () =>
+                          {_fieldSubmitted == false ? _saveInfo() : null},
                     )))
           ],
         ));
