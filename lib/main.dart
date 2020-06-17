@@ -1,8 +1,13 @@
+import 'package:communique/landing/inputUpdater/inputUpdater.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import './landing/landing.dart';
 
 void main() {
-  runApp(Communique());
+  runApp(ChangeNotifierProvider(
+    create: (context) => InputUpdater(),
+    child: Communique(),
+  ));
 }
 
 class Communique extends StatelessWidget {

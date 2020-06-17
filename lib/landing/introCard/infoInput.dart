@@ -1,3 +1,4 @@
+import 'package:communique/landing/inputUpdater/inputUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -10,9 +11,16 @@ class _InfoInputState extends State<InfoInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   final _nameFocus = FocusNode();
   final _locationFocus = FocusNode();
+  var _inputUpdater = InputUpdater();
 
-  void _submitInfo() {
+  String _name, _location;
+
+  void _saveInfo() {
     if (_formKey.currentState.validate()) {
+      // update input values globally
+      _inputUpdater.updateName(_name);
+      _inputUpdater.updateLocation(_location);
+
       Scaffold.of(context).showSnackBar(SnackBar(content: Text('Info saved!')));
     }
   }
@@ -29,6 +37,12 @@ class _InfoInputState extends State<InfoInput> {
               height: 65,
               child: TextFormField(
                 focusNode: _nameFocus,
+                textInputAction: TextInputAction.next,
+                onChanged: (value) => {
+                  setState(() {
+                    _name = value;
+                  })
+                },
                 cursorColor: Colors.green[600],
                 textCapitalization: TextCapitalization.words,
                 decoration: InputDecoration(
@@ -51,6 +65,13 @@ class _InfoInputState extends State<InfoInput> {
                 height: 65,
                 child: TextFormField(
                   focusNode: _locationFocus,
+                  onFieldSubmitted: (name) => _saveInfo(),
+                  textInputAction: TextInputAction.done,
+                  onChanged: (value) => {
+                    setState(() {
+                      _location = value;
+                    })
+                  },
                   cursorColor: Colors.green[600],
                   textCapitalization: TextCapitalization.words,
                   decoration: InputDecoration(
@@ -80,7 +101,7 @@ class _InfoInputState extends State<InfoInput> {
                       padding: new EdgeInsets.all(0.0),
                       tooltip: 'Save',
                       icon: Icon(Icons.check, size: 30),
-                      onPressed: () => _submitInfo(),
+                      onPressed: () => _saveInfo(),
                     )))
           ],
         ));
