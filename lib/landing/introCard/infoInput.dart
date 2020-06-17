@@ -9,8 +9,9 @@ class InfoInput extends StatefulWidget {
 
 class _InfoInputState extends State<InfoInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-  var _inputUpdater = InputUpdater();
-
+  final _nameNode = FocusNode();
+  final _locationNode = FocusNode();
+  final _inputUpdater = InputUpdater();
   String _name, _location;
   bool _fieldSubmitted = false;
 
@@ -21,7 +22,7 @@ class _InfoInputState extends State<InfoInput> {
       _inputUpdater.updateName(_name);
       _inputUpdater.updateLocation(_location);
 
-      Scaffold.of(context).showSnackBar(SnackBar(content: Text('Info saved!')));
+      Scaffold.of(context).showSnackBar(SnackBar(content: Text('Saved!')));
     }
   }
 
@@ -36,8 +37,9 @@ class _InfoInputState extends State<InfoInput> {
             SizedBox(
               height: 65,
               child: TextFormField(
-                onFieldSubmitted: (location) =>
-                    {_fieldSubmitted = true, _saveInfo()},
+                focusNode: _nameNode,
+                onFieldSubmitted: (name) =>
+                    {FocusScope.of(context).requestFocus(_locationNode)},
                 textInputAction: TextInputAction.next,
                 onChanged: (value) => {
                   setState(() {
@@ -66,6 +68,7 @@ class _InfoInputState extends State<InfoInput> {
             SizedBox(
                 height: 65,
                 child: TextFormField(
+                  focusNode: _locationNode,
                   onFieldSubmitted: (location) =>
                       {_fieldSubmitted = true, _saveInfo()},
                   textInputAction: TextInputAction.done,
