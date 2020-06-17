@@ -69,8 +69,11 @@ class _InfoInputState extends State<InfoInput> {
                 height: 65,
                 child: TextFormField(
                   focusNode: _locationNode,
-                  onFieldSubmitted: (location) =>
-                      {_fieldSubmitted = true, _saveInfo()},
+                  onFieldSubmitted: (location) => {
+                    _fieldSubmitted == false
+                        ? {_fieldSubmitted = true, _saveInfo()}
+                        : null
+                  },
                   textInputAction: TextInputAction.done,
                   onChanged: (value) => {
                     setState(() {
