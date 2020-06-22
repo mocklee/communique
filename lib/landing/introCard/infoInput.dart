@@ -67,7 +67,7 @@ class _InfoInputState extends State<InfoInput> {
                       FocusScope.of(context).requestFocus(_locationFocus);
                       // prevent requestFocus from firing repeatedly as tab key is held
                       _tabbedRecently = true;
-                      Future.delayed(Duration(milliseconds: 100),
+                      Future.delayed(Duration(milliseconds: 70),
                           () => _tabbedRecently = false);
                     }
                   },
@@ -112,7 +112,7 @@ class _InfoInputState extends State<InfoInput> {
                         FocusScope.of(context).requestFocus(_saveFocus);
                         // prevent requestFocus from firing repeatedly as tab key is held
                         _tabbedRecently = true;
-                        Future.delayed(Duration(milliseconds: 100),
+                        Future.delayed(Duration(milliseconds: 70),
                             () => _tabbedRecently = false);
                       }
                     },
@@ -165,7 +165,7 @@ class _InfoInputState extends State<InfoInput> {
                             FocusScope.of(context).requestFocus(_nameFocus);
                             // prevent requestFocus from firing repeatedly as tab key is held
                             _tabbedRecently = true;
-                            Future.delayed(Duration(milliseconds: 100),
+                            Future.delayed(Duration(milliseconds: 70),
                                 () => _tabbedRecently = false);
                           }
                           if (kData.keyLabel == 'Enter' &&
