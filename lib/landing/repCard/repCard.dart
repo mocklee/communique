@@ -1,3 +1,4 @@
+import 'package:communique/landing/repCard/levelChips.dart';
 import 'package:flutter/material.dart';
 
 class RepCard extends StatelessWidget {
@@ -29,7 +30,7 @@ class RepCard extends StatelessWidget {
                           ))),
                   Container(
                       padding: EdgeInsets.only(
-                        top: 20,
+                        top: 40,
                         bottom: 30,
                         right: 20,
                         left: 20,
@@ -43,6 +44,7 @@ class RepCard extends StatelessWidget {
                           height: 1.3,
                         ),
                       )),
+                  LevelChip(),
                 ])));
   }
 }
