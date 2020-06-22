@@ -178,6 +178,7 @@ class _InfoInputState extends State<InfoInput> {
                           padding: new EdgeInsets.all(0.0),
                           tooltip: 'Save',
                           icon: Icon(Icons.check, size: 30),
+                          splashColor: Colors.teal[600],
                           onPressed: () =>
                               {if (_fieldSubmitted == false) _saveInfo()},
                         ))))

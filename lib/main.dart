@@ -19,6 +19,10 @@ class Communique extends StatelessWidget {
           primaryColor: Colors.teal,
           primarySwatch: Colors.teal,
           brightness: Brightness.dark,
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+              backgroundColor: Colors.teal[200],
+              foregroundColor: Colors.white,
+              splashColor: Colors.teal[600]),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         // the meat

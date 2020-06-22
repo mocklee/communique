@@ -8,13 +8,11 @@ class InputUpdater extends ChangeNotifier {
 
   void updateName(String userName) {
     name = userName;
-    print(name);
     notifyListeners();
   }
 
   void updateLocation(String userLocation) {
     location = userLocation;
-    print(location);
     notifyListeners();
   }
 
