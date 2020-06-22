@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class IntroCard extends StatelessWidget {
   IntroCard({Key key}) : super(key: key);
+
   final String introTitle = 'Let the collective voice rise.';
   final String introSubtitle = 'Find the words to support your cause';
 

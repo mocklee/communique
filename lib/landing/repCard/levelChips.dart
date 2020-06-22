@@ -16,8 +16,8 @@ class LevelChipState extends State<LevelChip> with TickerProviderStateMixin {
       ChoiceChip choiceChip = ChoiceChip(
         selected: _selectedIndex[i],
         label: Text(_options[i], style: TextStyle(color: Colors.white)),
-        elevation: 5,
-        pressElevation: 5,
+        elevation: 4,
+        pressElevation: 2,
         backgroundColor: Colors.teal,
         selectedColor: Colors.teal[300],
         onSelected: (bool selected) {
