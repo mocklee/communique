@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 class IntroCard extends StatelessWidget {
   IntroCard({Key key}) : super(key: key);
+  final String introTitle = 'Let the collective voice rise.';
+  final String introSubtitle = 'Find the words to support your cause';
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +19,12 @@ class IntroCard extends StatelessWidget {
                     horizontal: 12,
                     vertical: 0,
                   ),
-                  title: Text('Let the collective voice rise.',
+                  title: Text(introTitle,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                       )),
-                  subtitle: Text('Find the words to support your cause',
+                  subtitle: Text(introSubtitle,
                       style: TextStyle(
                         fontSize: 11,
                       ))),
