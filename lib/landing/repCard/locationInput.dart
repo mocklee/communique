@@ -29,10 +29,10 @@ class _InfoInputState extends State<InfoInput> {
   @override
   void dispose() {
     // clean up focus nodes when form is disposed
+    super.dispose();
+
     _locationFocus.dispose();
     _searchFocus.dispose();
-
-    super.dispose();
   }
 
   void _saveInfo() {
