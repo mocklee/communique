@@ -43,7 +43,8 @@ class _InfoInputState extends State<InfoInput> {
       _inputUpdater.updateName(_name);
       _inputUpdater.updateLocation(_location);
 
-      Scaffold.of(context).showSnackBar(SnackBar(content: Text('Saved!')));
+      Scaffold.of(context)
+          .showSnackBar(SnackBar(content: Text('Name & city saved!')));
     }
   }
 
