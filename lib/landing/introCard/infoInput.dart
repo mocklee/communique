@@ -1,4 +1,6 @@
-import 'package:communique/landing/inputUpdater/inputUpdater.dart';
+import 'package:communique/landing/business/validator/inputValidator.dart';
+import 'package:communique/landing/updaterProviders/focusUpdater.dart';
+import 'package:communique/landing/updaterProviders/inputUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -14,6 +16,7 @@ class _InfoInputState extends State<InfoInput> {
   FocusNode _locationFocus;
   FocusNode _saveFocus;
   final _inputUpdater = InputUpdater();
+  final _focusUpdater = FocusUpdater();
 
   String _name, _location;
   bool _fieldSubmitted = false;
@@ -94,10 +97,7 @@ class _InfoInputState extends State<InfoInput> {
                       contentPadding: EdgeInsets.only(bottom: 1),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please enter your name.';
-                      }
-                      return null;
+                      return InputValidator.validateName(value);
                     },
                   ),
                 )),
@@ -118,38 +118,34 @@ class _InfoInputState extends State<InfoInput> {
                       }
                     },
                     child: TextFormField(
-                      focusNode: _locationFocus,
-                      onFieldSubmitted: (location) => {
-                        if (_fieldSubmitted == false)
-                          {_fieldSubmitted = true, _saveInfo()}
-                      },
-                      textInputAction: TextInputAction.done,
-                      onChanged: (value) => {
-                        setState(() {
-                          _location = value;
-                          _fieldSubmitted = false;
-                        })
-                      },
-                      cursorColor: Colors.green[600],
-                      textCapitalization: TextCapitalization.words,
-                      decoration: InputDecoration(
-                        labelText: 'City, state',
-                        labelStyle: TextStyle(fontSize: 16),
-                        errorStyle: TextStyle(fontSize: 11.5),
-                        helperText:
-                            'This card stores data only on your device.',
-                        helperStyle: TextStyle(
-                            fontSize: 11.5, fontStyle: FontStyle.italic),
-                        isDense: true,
-                        contentPadding: EdgeInsets.only(bottom: 1),
-                      ),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'Let them know where you are!';
-                        }
-                        return null;
-                      },
-                    ))),
+                        focusNode: _locationFocus,
+                        onFieldSubmitted: (location) => {
+                              if (_fieldSubmitted == false)
+                                {_fieldSubmitted = true, _saveInfo()}
+                            },
+                        textInputAction: TextInputAction.done,
+                        onChanged: (value) => {
+                              setState(() {
+                                _location = value;
+                                _fieldSubmitted = false;
+                              })
+                            },
+                        cursorColor: Colors.green[600],
+                        textCapitalization: TextCapitalization.words,
+                        decoration: InputDecoration(
+                          labelText: 'City, state',
+                          labelStyle: TextStyle(fontSize: 16),
+                          errorStyle: TextStyle(fontSize: 11.5),
+                          helperText:
+                              'This card stores data only on your device.',
+                          helperStyle: TextStyle(
+                              fontSize: 11.5, fontStyle: FontStyle.italic),
+                          isDense: true,
+                          contentPadding: EdgeInsets.only(bottom: 1),
+                        ),
+                        validator: (value) {
+                          return InputValidator.validateLocation(value);
+                        }))),
             Container(
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                 alignment: Alignment.bottomRight,

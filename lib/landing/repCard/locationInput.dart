@@ -1,4 +1,4 @@
-import 'package:communique/landing/inputUpdater/inputUpdater.dart';
+import 'package:communique/landing/updaterProviders/inputUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -10,8 +10,6 @@ class InfoInput extends StatefulWidget {
 class _InfoInputState extends State<InfoInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
-  final _nameNode = FocusNode();
-  final _locationNode = FocusNode();
   final _inputUpdater = InputUpdater();
 
   String _name, _location;
