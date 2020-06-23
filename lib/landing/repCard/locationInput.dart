@@ -19,7 +19,6 @@ class _InfoInputState extends State<InfoInput> {
 
   void _saveInfo() {
     if (_formKey.currentState.validate()) {
-      print(_fieldSubmitted);
       // update input values globally
       _inputUpdater.updateName(_name);
       _inputUpdater.updateLocation(_location);
@@ -38,39 +37,53 @@ class _InfoInputState extends State<InfoInput> {
           children: <Widget>[
             SizedBox(
                 height: 65,
-                child: TextFormField(
-                  focusNode: _locationNode,
-                  onFieldSubmitted: (location) => {
-                    _fieldSubmitted == false
-                        ? {_fieldSubmitted = true, _saveInfo()}
-                        : null
-                  },
-                  textInputAction: TextInputAction.done,
-                  onChanged: (value) => {
-                    setState(() {
-                      _location = value;
-                      _fieldSubmitted = false;
-                    })
-                  },
-                  cursorColor: Colors.green[600],
-                  textCapitalization: TextCapitalization.words,
-                  decoration: InputDecoration(
-                    labelText: 'City, state',
-                    labelStyle: TextStyle(fontSize: 16),
-                    errorStyle: TextStyle(fontSize: 11.5),
-                    helperText: 'This card stores data only on your device.',
-                    helperStyle:
-                        TextStyle(fontSize: 11.5, fontStyle: FontStyle.italic),
-                    isDense: true,
-                    contentPadding: EdgeInsets.only(bottom: 1),
-                  ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Let them know where you are!';
-                    }
-                    return null;
-                  },
-                )),
+                child: RawKeyboardListener(
+                    focusNode: FocusNode(),
+                    onKey: (key) {
+                      RawKeyEventDataWeb kData = key.data;
+                      if (kData.keyLabel == 'Tab' &&
+                          !_tabbedRecently &&
+                          _locationFocus.hasFocus) {
+                        FocusScope.of(context).requestFocus(_saveFocus);
+                        // prevent requestFocus from firing repeatedly as tab key is held
+                        _tabbedRecently = true;
+                        Future.delayed(Duration(milliseconds: 70),
+                            () => _tabbedRecently = false);
+                      }
+                    },
+                    child: TextFormField(
+                      focusNode: _locationFocus,
+                      onFieldSubmitted: (location) => {
+                        if (_fieldSubmitted == false)
+                          {_fieldSubmitted = true, _saveInfo()}
+                      },
+                      textInputAction: TextInputAction.done,
+                      onChanged: (value) => {
+                        setState(() {
+                          _location = value;
+                          _fieldSubmitted = false;
+                        })
+                      },
+                      cursorColor: Colors.green[600],
+                      textCapitalization: TextCapitalization.words,
+                      decoration: InputDecoration(
+                        labelText: 'City, state',
+                        labelStyle: TextStyle(fontSize: 16),
+                        errorStyle: TextStyle(fontSize: 11.5),
+                        helperText:
+                            'This card stores data only on your device.',
+                        helperStyle: TextStyle(
+                            fontSize: 11.5, fontStyle: FontStyle.italic),
+                        isDense: true,
+                        contentPadding: EdgeInsets.only(bottom: 1),
+                      ),
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Let them know where you are!';
+                        }
+                        return null;
+                      },
+                    ))),
             Container(
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                 alignment: Alignment.bottomRight,
