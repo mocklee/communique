@@ -1,6 +1,6 @@
 import 'package:communique/landing/business/validator/inputValidator.dart';
-import 'package:communique/landing/updaterProviders/focusUpdater.dart';
-import 'package:communique/landing/updaterProviders/inputUpdater.dart';
+import 'package:communique/landing/business/updaterProviders/focusUpdater.dart';
+import 'package:communique/landing/business/updaterProviders/inputUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -43,6 +43,7 @@ class _InfoInputState extends State<InfoInput> {
   void _saveInfo() {
     if (_formKey.currentState.validate()) {
       // update input values globally
+      print("reached");
       _inputUpdater.updateName(_name);
       _inputUpdater.updateLocation(_location);
 

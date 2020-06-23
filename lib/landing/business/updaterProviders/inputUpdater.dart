@@ -13,11 +13,14 @@ class InputUpdater extends ChangeNotifier {
 
   void updateLocation(String userLocation) {
     location = userLocation;
+    print(location);
+
     notifyListeners();
   }
 
   void updateRepLevel(List<bool> userSelectedLevels) {
     repLevel = userSelectedLevels;
+    print(repLevel);
     notifyListeners();
   }
 }

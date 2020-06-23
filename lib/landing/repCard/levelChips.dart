@@ -29,6 +29,7 @@ class LevelChipState extends State<LevelChip> with TickerProviderStateMixin {
               _selectedIndex[i] = false;
             else
               _selectedIndex[i] = selected;
+            _inputUpdater.updateRepLevel(_selectedIndex);
           });
         },
       );
