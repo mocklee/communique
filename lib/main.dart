@@ -1,4 +1,4 @@
-import 'package:communique/landing/business/updaterProviders/inputUpdater.dart';
+import 'package:communique/landing/business/inputUpdater.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import './landing/landing.dart';

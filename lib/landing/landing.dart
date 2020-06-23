@@ -63,7 +63,7 @@ class _LandingState extends State<Landing> {
         floatingActionButton: FloatingActionButton(
           onPressed: _incrementCounter,
           tooltip: 'New email',
-          child: Icon(Icons.add),
+          child: AddIconPainter(),
         ));
   }
 }

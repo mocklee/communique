@@ -10,6 +10,18 @@ class LevelChipState extends State<LevelChip> with TickerProviderStateMixin {
   List<bool> _selectedIndex = [false, false, false, false];
   List<String> _options = ['City', 'County', 'State', 'Federal'];
 
+  final FocusNode cityFocus = FocusNode();
+  final FocusNode countyFocus = FocusNode();
+  final FocusNode stateFocus = FocusNode();
+  final FocusNode federalFocus = FocusNode();
+
+  final List<FocusNode> focusNodes = [
+    cityFocus,
+    countyFocus,
+    stateFocus,
+    federalFocus
+  ];
+
   final _inputUpdater = InputUpdater();
 
   Widget _buildChips() {

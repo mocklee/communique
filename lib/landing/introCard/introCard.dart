@@ -1,5 +1,5 @@
 import 'package:communique/landing/introCard/heroText.dart';
-import 'package:communique/landing/introCard/infoInput.dart';
+import 'package:communique/landing/introCard/introInput.dart';
 import 'package:flutter/material.dart';
 
 class IntroCard extends StatelessWidget {

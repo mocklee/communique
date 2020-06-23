@@ -1,6 +1,5 @@
-import 'package:communique/landing/business/validator/inputValidator.dart';
-import 'package:communique/landing/business/updaterProviders/focusUpdater.dart';
-import 'package:communique/landing/business/updaterProviders/inputUpdater.dart';
+import 'package:communique/landing/business/inputValidator.dart';
+import 'package:communique/landing/business/inputUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -16,7 +15,6 @@ class _InfoInputState extends State<InfoInput> {
   FocusNode _locationFocus;
   FocusNode _saveFocus;
   final _inputUpdater = InputUpdater();
-  final _focusUpdater = FocusUpdater();
 
   String _name, _location;
   bool _fieldSubmitted = false;
@@ -36,6 +34,7 @@ class _InfoInputState extends State<InfoInput> {
     // clean up focus nodes when form is disposed
     _nameFocus.dispose();
     _locationFocus.dispose();
+    _saveFocus.dispose();
 
     super.dispose();
   }
@@ -72,7 +71,7 @@ class _InfoInputState extends State<InfoInput> {
                       FocusScope.of(context).requestFocus(_locationFocus);
                       // prevent requestFocus from firing repeatedly as tab key is held
                       _tabbedRecently = true;
-                      Future.delayed(Duration(milliseconds: 70),
+                      Future.delayed(Duration(milliseconds: 55),
                           () => _tabbedRecently = false);
                     }
                   },
@@ -114,7 +113,7 @@ class _InfoInputState extends State<InfoInput> {
                         FocusScope.of(context).requestFocus(_saveFocus);
                         // prevent requestFocus from firing repeatedly as tab key is held
                         _tabbedRecently = true;
-                        Future.delayed(Duration(milliseconds: 70),
+                        Future.delayed(Duration(milliseconds: 55),
                             () => _tabbedRecently = false);
                       }
                     },
@@ -163,7 +162,7 @@ class _InfoInputState extends State<InfoInput> {
                             FocusScope.of(context).requestFocus(_nameFocus);
                             // prevent requestFocus from firing repeatedly as tab key is held
                             _tabbedRecently = true;
-                            Future.delayed(Duration(milliseconds: 70),
+                            Future.delayed(Duration(milliseconds: 55),
                                 () => _tabbedRecently = false);
                           }
                           if (kData.keyLabel == 'Enter' &&
