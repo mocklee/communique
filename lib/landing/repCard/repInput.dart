@@ -2,26 +2,38 @@ import 'package:communique/landing/business/inputUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class InfoInput extends StatefulWidget {
+class RepInput extends StatefulWidget {
   @override
-  _InfoInputState createState() => _InfoInputState();
+  _RepInputState createState() => _RepInputState();
 }
 
-class _InfoInputState extends State<InfoInput> {
+class _RepInputState extends State<RepInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+
+  List<bool> _selectedIndex = [false, false, false, false];
+  List<String> _options = ['City', 'County', 'State', 'Federal'];
+
+  String _name, _location;
+  bool _fieldSubmitted = false;
+
+  bool _tabbedRecently = false;
+  FocusNode _cityFocus;
+  FocusNode _countyFocus;
+  FocusNode _stateFocus;
+  FocusNode _federalFocus;
   FocusNode _locationFocus;
   FocusNode _searchFocus;
 
   final _inputUpdater = InputUpdater();
 
-  String _name, _location;
-  bool _fieldSubmitted = false;
-  bool _tabbedRecently = false;
-
   @override
   void initState() {
     super.initState();
 
+    _cityFocus = FocusNode();
+    _countyFocus = FocusNode();
+    _stateFocus = FocusNode();
+    _federalFocus = FocusNode();
     _locationFocus = FocusNode();
     _searchFocus = FocusNode();
   }
@@ -31,6 +43,10 @@ class _InfoInputState extends State<InfoInput> {
     // clean up focus nodes when form is disposed
     super.dispose();
 
+    _cityFocus.dispose();
+    _countyFocus.dispose();
+    _stateFocus.dispose();
+    _federalFocus.dispose();
     _locationFocus.dispose();
     _searchFocus.dispose();
   }
@@ -45,6 +61,38 @@ class _InfoInputState extends State<InfoInput> {
     }
   }
 
+  Widget _buildChips() {
+    List<Widget> chips = new List();
+
+    for (int i = 0; i < _options.length; i++) {
+      ChoiceChip choiceChip = ChoiceChip(
+        selected: _selectedIndex[i],
+        label: Text(_options[i], style: TextStyle(color: Colors.white)),
+        elevation: 4,
+        pressElevation: 2,
+        backgroundColor: Colors.teal,
+        selectedColor: Colors.teal[300],
+        onSelected: (bool selected) {
+          setState(() {
+            if (_selectedIndex[i] == selected)
+              _selectedIndex[i] = false;
+            else
+              _selectedIndex[i] = selected;
+            _inputUpdater.updateRepLevel(_selectedIndex);
+          });
+        },
+      );
+
+      chips.add(Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10), child: choiceChip));
+    }
+
+    return ListView(
+      scrollDirection: Axis.horizontal,
+      children: chips,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -53,6 +101,20 @@ class _InfoInputState extends State<InfoInput> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                      padding: EdgeInsets.only(left: 10, bottom: 5),
+                      child: Text(
+                        'Choose level of government…',
+                        style: TextStyle(fontStyle: FontStyle.italic),
+                      )),
+                  Container(
+                    height: 45,
+                    child: _buildChips(),
+                  ),
+                ]),
             SizedBox(
                 height: 65,
                 child: RawKeyboardListener(
@@ -115,19 +177,19 @@ class _InfoInputState extends State<InfoInput> {
                           if (kData.keyLabel == 'Tab' &&
                               !_tabbedRecently &&
                               _searchFocus.hasFocus) {
-                            FocusScope.of(context).requestFocus(_nameFocus);
+                            FocusScope.of(context).requestFocus();
                             // prevent requestFocus from firing repeatedly as tab key is held
                             _tabbedRecently = true;
                             Future.delayed(Duration(milliseconds: 55),
                                 () => _tabbedRecently = false);
                           }
                           if (kData.keyLabel == 'Enter' &&
-                              _saveFocus.hasFocus) {
+                              _searchFocus.hasFocus) {
                             if (_fieldSubmitted == false) _saveInfo();
                           }
                         },
                         child: IconButton(
-                          focusNode: _saveFocus,
+                          focusNode: _searchFocus,
                           padding: new EdgeInsets.all(0.0),
                           tooltip: 'Save',
                           icon: Icon(Icons.check, size: 30),

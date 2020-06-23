@@ -42,7 +42,7 @@ class _InfoInputState extends State<InfoInput> {
   void _saveInfo() {
     if (_formKey.currentState.validate()) {
       // update input values globally
-      print("reached");
+      print("Name & city saved!");
       _inputUpdater.updateName(_name);
       _inputUpdater.updateLocation(_location);
 

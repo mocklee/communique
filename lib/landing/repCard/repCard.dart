@@ -1,4 +1,4 @@
-import 'package:communique/landing/repCard/levelChips.dart';
+import 'package:communique/landing/repCard/repInput.dart';
 import 'package:flutter/material.dart';
 
 class RepCard extends StatelessWidget {
@@ -44,7 +44,7 @@ class RepCard extends StatelessWidget {
                           height: 1.3,
                         ),
                       )),
-                  LevelChip(),
+                  RepInput(),
                 ])));
   }
 }
