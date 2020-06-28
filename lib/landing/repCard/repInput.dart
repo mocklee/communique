@@ -110,13 +110,17 @@ class _RepInputState extends State<RepInput> {
                         'Choose level of government…',
                         style: TextStyle(fontStyle: FontStyle.italic),
                       )),
-                  Container(
-                    height: 45,
-                    child: _buildChips(),
-                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 8),
+                    child: Container(
+                      height: 40,
+                      child: _buildChips(),
+                    ),
+                  )
                 ]),
             SizedBox(
                 height: 65,
+                width: 260,
                 child: RawKeyboardListener(
                     focusNode: FocusNode(),
                     onKey: (key) {
@@ -165,7 +169,7 @@ class _RepInputState extends State<RepInput> {
                       },
                     ))),
             Container(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                 alignment: Alignment.bottomRight,
                 child: SizedBox(
                     height: 30,
@@ -192,7 +196,7 @@ class _RepInputState extends State<RepInput> {
                           focusNode: _searchFocus,
                           padding: new EdgeInsets.all(0.0),
                           tooltip: 'Save',
-                          icon: Icon(Icons.check, size: 30),
+                          icon: Icon(Icons.search, size: 30),
                           splashColor: Colors.teal[600],
                           onPressed: () =>
                               {if (_fieldSubmitted == false) _saveInfo()},

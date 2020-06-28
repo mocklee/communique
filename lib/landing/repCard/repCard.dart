@@ -30,8 +30,8 @@ class RepCard extends StatelessWidget {
                           ))),
                   Container(
                       padding: EdgeInsets.only(
-                        top: 40,
-                        bottom: 30,
+                        top: 35,
+                        bottom: 33,
                         right: 20,
                         left: 20,
                       ),
