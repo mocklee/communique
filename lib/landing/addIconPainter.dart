@@ -8,8 +8,8 @@ class AddIconPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(AddIconPainter oldDelegate) => false;
-
-  @override
-  bool shouldRebuildSemantics(AddIconPainter oldDelegate) => false;
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    // TODO: implement shouldRepaint
+    throw UnimplementedError();
+  }
 }

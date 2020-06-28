@@ -1,5 +1,6 @@
 library landing;
 
+import 'package:communique/landing/addIconPainter.dart';
 import 'package:flutter/material.dart';
 
 import './introCard/introCard.dart';
@@ -63,7 +64,10 @@ class _LandingState extends State<Landing> {
         floatingActionButton: FloatingActionButton(
           onPressed: _incrementCounter,
           tooltip: 'New email',
-          child: AddIconPainter(),
+          child: CustomPaint(
+            child: Container(),
+            foregroundPainter: AddIconPainter(),
+          ),
         ));
   }
 }
