@@ -41,14 +41,9 @@ class IntroCard extends StatelessWidget {
                     child: new HeroText(),
                   )),
               SizedBox(
-                  width: 260,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      InfoInput(),
-                    ],
-                  ))
+                width: 260,
+                child: IntroInput(),
+              )
             ])));
   }
 }

@@ -57,7 +57,7 @@ class _RepInputState extends State<RepInput> {
       _inputUpdater.updateName(_name);
       _inputUpdater.updateLocation(_location);
 
-      Scaffold.of(context).showSnackBar(SnackBar(content: Text('Saved!')));
+      // TODO: implement Google's Civic Data API & Flutter navigator
     }
   }
 
@@ -111,7 +111,7 @@ class _RepInputState extends State<RepInput> {
                         style: TextStyle(fontStyle: FontStyle.italic),
                       )),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 8),
+                    padding: EdgeInsets.only(bottom: 13),
                     child: Container(
                       height: 40,
                       child: _buildChips(),
@@ -155,7 +155,7 @@ class _RepInputState extends State<RepInput> {
                         labelStyle: TextStyle(fontSize: 16),
                         errorStyle: TextStyle(fontSize: 11.5),
                         helperText:
-                            'This card stores data only on your device.',
+                            "Data retrieved from Google's Civic Data API.",
                         helperStyle: TextStyle(
                             fontSize: 11.5, fontStyle: FontStyle.italic),
                         isDense: true,
@@ -169,7 +169,7 @@ class _RepInputState extends State<RepInput> {
                       },
                     ))),
             Container(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                padding: EdgeInsets.symmetric(vertical: 7, horizontal: 31),
                 alignment: Alignment.bottomRight,
                 child: SizedBox(
                     height: 30,
@@ -195,7 +195,7 @@ class _RepInputState extends State<RepInput> {
                         child: IconButton(
                           focusNode: _searchFocus,
                           padding: new EdgeInsets.all(0.0),
-                          tooltip: 'Save',
+                          tooltip: 'Find rep',
                           icon: Icon(Icons.search, size: 30),
                           splashColor: Colors.teal[600],
                           onPressed: () =>

@@ -3,18 +3,19 @@ import 'package:communique/landing/business/inputUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class InfoInput extends StatefulWidget {
+class IntroInput extends StatefulWidget {
   @override
-  _InfoInputState createState() => _InfoInputState();
+  _IntroInputState createState() => _IntroInputState();
 }
 
-class _InfoInputState extends State<InfoInput> {
+class _IntroInputState extends State<IntroInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
   FocusNode _nameFocus;
   FocusNode _locationFocus;
   FocusNode _saveFocus;
   final _inputUpdater = InputUpdater();
+  final Duration tabDelay = Duration(milliseconds: 100);
 
   String _name, _location;
   bool _fieldSubmitted = false;
@@ -71,8 +72,7 @@ class _InfoInputState extends State<InfoInput> {
                       FocusScope.of(context).requestFocus(_locationFocus);
                       // prevent requestFocus from firing repeatedly as tab key is held
                       _tabbedRecently = true;
-                      Future.delayed(Duration(milliseconds: 55),
-                          () => _tabbedRecently = false);
+                      Future.delayed(tabDelay, () => _tabbedRecently = false);
                     }
                   },
                   child: TextFormField(
@@ -113,8 +113,7 @@ class _InfoInputState extends State<InfoInput> {
                         FocusScope.of(context).requestFocus(_saveFocus);
                         // prevent requestFocus from firing repeatedly as tab key is held
                         _tabbedRecently = true;
-                        Future.delayed(Duration(milliseconds: 55),
-                            () => _tabbedRecently = false);
+                        Future.delayed(tabDelay, () => _tabbedRecently = false);
                       }
                     },
                     child: TextFormField(
@@ -162,8 +161,8 @@ class _InfoInputState extends State<InfoInput> {
                             FocusScope.of(context).requestFocus(_nameFocus);
                             // prevent requestFocus from firing repeatedly as tab key is held
                             _tabbedRecently = true;
-                            Future.delayed(Duration(milliseconds: 55),
-                                () => _tabbedRecently = false);
+                            Future.delayed(
+                                tabDelay, () => _tabbedRecently = false);
                           }
                           if (kData.keyLabel == 'Enter' &&
                               _saveFocus.hasFocus) {
