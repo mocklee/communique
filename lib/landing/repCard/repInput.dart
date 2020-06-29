@@ -1,4 +1,5 @@
 import 'package:communique/landing/business/inputUpdater.dart';
+import 'package:communique/landing/repCard/repFocusUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -13,48 +14,29 @@ class _RepInputState extends State<RepInput> {
   List<bool> _selectedIndex = [false, false, false, false];
   List<String> _options = ['City', 'County', 'State', 'Federal'];
 
-  String _name, _location;
+  String _location;
   bool _fieldSubmitted = false;
-
   bool _tabbedRecently = false;
-  FocusNode _cityFocus;
-  FocusNode _countyFocus;
-  FocusNode _stateFocus;
-  FocusNode _federalFocus;
-  FocusNode _locationFocus;
-  FocusNode _searchFocus;
 
   final _inputUpdater = InputUpdater();
+  final _focusUpdater = RepFocusUpdater();
 
   @override
   void initState() {
     super.initState();
-
-    _cityFocus = FocusNode();
-    _countyFocus = FocusNode();
-    _stateFocus = FocusNode();
-    _federalFocus = FocusNode();
-    _locationFocus = FocusNode();
-    _searchFocus = FocusNode();
+    _focusUpdater.repInit();
   }
 
   @override
   void dispose() {
     // clean up focus nodes when form is disposed
     super.dispose();
-
-    _cityFocus.dispose();
-    _countyFocus.dispose();
-    _stateFocus.dispose();
-    _federalFocus.dispose();
-    _locationFocus.dispose();
-    _searchFocus.dispose();
+    _focusUpdater.repDispose();
   }
 
   void _saveInfo() {
     if (_formKey.currentState.validate()) {
       // update input values globally
-      _inputUpdater.updateName(_name);
       _inputUpdater.updateLocation(_location);
 
       // TODO: implement Google's Civic Data API & Flutter navigator
@@ -127,8 +109,9 @@ class _RepInputState extends State<RepInput> {
                       RawKeyEventDataWeb kData = key.data;
                       if (kData.keyLabel == 'Tab' &&
                           !_tabbedRecently &&
-                          _locationFocus.hasFocus) {
-                        FocusScope.of(context).requestFocus(_searchFocus);
+                          _focusUpdater.locationFocus.hasFocus) {
+                        FocusScope.of(context)
+                            .requestFocus(_focusUpdater.searchFocus);
                         // prevent requestFocus from firing repeatedly as tab key is held
                         _tabbedRecently = true;
                         Future.delayed(Duration(milliseconds: 70),
@@ -136,7 +119,7 @@ class _RepInputState extends State<RepInput> {
                       }
                     },
                     child: TextFormField(
-                      focusNode: _locationFocus,
+                      focusNode: _focusUpdater.locationFocus,
                       onFieldSubmitted: (location) => {
                         if (_fieldSubmitted == false)
                           {_fieldSubmitted = true, _saveInfo()}
@@ -169,7 +152,7 @@ class _RepInputState extends State<RepInput> {
                       },
                     ))),
             Container(
-                padding: EdgeInsets.symmetric(vertical: 7, horizontal: 31),
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 31),
                 alignment: Alignment.bottomRight,
                 child: SizedBox(
                     height: 30,
@@ -180,7 +163,7 @@ class _RepInputState extends State<RepInput> {
                           RawKeyEventDataWeb kData = key.data;
                           if (kData.keyLabel == 'Tab' &&
                               !_tabbedRecently &&
-                              _searchFocus.hasFocus) {
+                              _focusUpdater.searchFocus.hasFocus) {
                             FocusScope.of(context).requestFocus();
                             // prevent requestFocus from firing repeatedly as tab key is held
                             _tabbedRecently = true;
@@ -188,12 +171,12 @@ class _RepInputState extends State<RepInput> {
                                 () => _tabbedRecently = false);
                           }
                           if (kData.keyLabel == 'Enter' &&
-                              _searchFocus.hasFocus) {
+                              _focusUpdater.searchFocus.hasFocus) {
                             if (_fieldSubmitted == false) _saveInfo();
                           }
                         },
                         child: IconButton(
-                          focusNode: _searchFocus,
+                          focusNode: _focusUpdater.searchFocus,
                           padding: new EdgeInsets.all(0.0),
                           tooltip: 'Find rep',
                           icon: Icon(Icons.search, size: 30),
