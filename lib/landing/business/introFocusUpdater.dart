@@ -1,4 +1,4 @@
-import 'package:communique/landing/repCard/repFocusUpdater.dart';
+import 'package:communique/landing/business/repFocusUpdater.dart';
 import 'package:flutter/material.dart';
 
 // Contains focus nodes for introCard
@@ -24,6 +24,6 @@ class IntroFocusUpdater {
   }
 
   FocusNode nextWidgetFocus() {
-    return _nextWidgetFocus.cityFocus;
+    return _nextWidgetFocus.searchFocus;
   }
 }

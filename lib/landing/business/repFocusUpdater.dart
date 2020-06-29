@@ -8,6 +8,8 @@ class RepFocusUpdater {
   FocusNode locationFocus;
   FocusNode searchFocus;
 
+  final _nextWidgetFocus; // TODO: continue tab focus direction left-to-right
+
   // for init of repCard nodes on load
   void repInit() {
     cityFocus = FocusNode();
@@ -26,5 +28,9 @@ class RepFocusUpdater {
     federalFocus.dispose();
     locationFocus.dispose();
     searchFocus.dispose();
+  }
+
+  FocusNode nextWidgetFocus() {
+    return _nextWidgetFocus.cityFocus;
   }
 }

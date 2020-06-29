@@ -1,5 +1,6 @@
 import 'package:communique/landing/business/inputUpdater.dart';
-import 'package:communique/landing/repCard/repFocusUpdater.dart';
+import 'package:communique/landing/business/tabDelay.dart';
+import 'package:communique/landing/business/repFocusUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -10,16 +11,15 @@ class RepInput extends StatefulWidget {
 
 class _RepInputState extends State<RepInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  final _inputUpdater = InputUpdater();
+  final _focusUpdater = RepFocusUpdater();
+  final _tabDelay = TabDelay();
 
   List<bool> _selectedIndex = [false, false, false, false];
   List<String> _options = ['City', 'County', 'State', 'Federal'];
 
   String _location;
   bool _fieldSubmitted = false;
-  bool _tabbedRecently = false;
-
-  final _inputUpdater = InputUpdater();
-  final _focusUpdater = RepFocusUpdater();
 
   @override
   void initState() {
@@ -45,25 +45,47 @@ class _RepInputState extends State<RepInput> {
 
   Widget _buildChips() {
     List<Widget> chips = new List();
+    List<FocusNode> _chipFocus = [
+      _focusUpdater.cityFocus,
+      _focusUpdater.countyFocus,
+      _focusUpdater.stateFocus,
+      _focusUpdater.federalFocus
+    ];
 
     for (int i = 0; i < _options.length; i++) {
-      ChoiceChip choiceChip = ChoiceChip(
-        selected: _selectedIndex[i],
-        label: Text(_options[i], style: TextStyle(color: Colors.white)),
-        elevation: 4,
-        pressElevation: 2,
-        backgroundColor: Colors.teal,
-        selectedColor: Colors.teal[300],
-        onSelected: (bool selected) {
-          setState(() {
-            if (_selectedIndex[i] == selected)
-              _selectedIndex[i] = false;
-            else
-              _selectedIndex[i] = selected;
-            _inputUpdater.updateRepLevel(_selectedIndex);
-          });
-        },
-      );
+      FocusNode nextFocus = (i + 1 > _options.length)
+          ? _focusUpdater.locationFocus
+          : _chipFocus[i];
+      RawKeyboardListener choiceChip = RawKeyboardListener(
+          focusNode: FocusNode(),
+          onKey: (key) {
+            RawKeyEventDataWeb kData = key.data;
+            if (kData.keyLabel == 'Tab' &&
+                !_tabDelay.tabbedRecently &&
+                _chipFocus[i].hasFocus) {
+              FocusScope.of(context).requestFocus(nextFocus);
+              // prevent requestFocus from firing repeatedly as tab key is held
+              _tabDelay.haveTabbedRecently();
+            }
+          },
+          child: ChoiceChip(
+            selected: _selectedIndex[i],
+            label: Text(_options[i], style: TextStyle(color: Colors.white)),
+            focusNode: _chipFocus[i],
+            elevation: 4,
+            pressElevation: 2,
+            backgroundColor: Colors.teal,
+            selectedColor: Colors.teal[300],
+            onSelected: (bool selected) {
+              setState(() {
+                if (_selectedIndex[i] == selected)
+                  _selectedIndex[i] = false;
+                else
+                  _selectedIndex[i] = selected;
+                _inputUpdater.updateRepLevel(_selectedIndex);
+              });
+            },
+          ));
 
       chips.add(Padding(
           padding: EdgeInsets.symmetric(horizontal: 10), child: choiceChip));
@@ -108,14 +130,12 @@ class _RepInputState extends State<RepInput> {
                     onKey: (key) {
                       RawKeyEventDataWeb kData = key.data;
                       if (kData.keyLabel == 'Tab' &&
-                          !_tabbedRecently &&
+                          !_tabDelay.tabbedRecently &&
                           _focusUpdater.locationFocus.hasFocus) {
                         FocusScope.of(context)
                             .requestFocus(_focusUpdater.searchFocus);
                         // prevent requestFocus from firing repeatedly as tab key is held
-                        _tabbedRecently = true;
-                        Future.delayed(Duration(milliseconds: 70),
-                            () => _tabbedRecently = false);
+                        _tabDelay.haveTabbedRecently();
                       }
                     },
                     child: TextFormField(
@@ -162,13 +182,11 @@ class _RepInputState extends State<RepInput> {
                         onKey: (key) {
                           RawKeyEventDataWeb kData = key.data;
                           if (kData.keyLabel == 'Tab' &&
-                              !_tabbedRecently &&
+                              !_tabDelay.tabbedRecently &&
                               _focusUpdater.searchFocus.hasFocus) {
-                            FocusScope.of(context).requestFocus();
+                            FocusScope.of(context).requestFocus(_focusUpdater.);
                             // prevent requestFocus from firing repeatedly as tab key is held
-                            _tabbedRecently = true;
-                            Future.delayed(Duration(milliseconds: 55),
-                                () => _tabbedRecently = false);
+                            _tabDelay.haveTabbedRecently();
                           }
                           if (kData.keyLabel == 'Enter' &&
                               _focusUpdater.searchFocus.hasFocus) {

@@ -1,6 +1,7 @@
 import 'package:communique/landing/business/inputValidator.dart';
 import 'package:communique/landing/business/inputUpdater.dart';
-import 'package:communique/landing/introCard/introFocusUpdater.dart';
+import 'package:communique/landing/business/tabDelay.dart';
+import 'package:communique/landing/business/introFocusUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -14,11 +15,10 @@ class _IntroInputState extends State<IntroInput> {
 
   final _inputUpdater = InputUpdater();
   final _focusUpdater = IntroFocusUpdater();
-  final Duration tabDelay = Duration(milliseconds: 100);
+  final _tabDelay = TabDelay();
 
   String _name, _location;
   bool _fieldSubmitted = false;
-  bool _tabbedRecently = false;
 
   @override
   void initState() {
@@ -62,13 +62,12 @@ class _IntroInputState extends State<IntroInput> {
                   onKey: (key) {
                     RawKeyEventDataWeb kData = key.data;
                     if (kData.keyLabel == 'Tab' &&
-                        !_tabbedRecently &&
+                        !_tabDelay.tabbedRecently &&
                         _focusUpdater.nameFocus.hasFocus) {
                       FocusScope.of(context)
                           .requestFocus(_focusUpdater.locationFocus);
                       // prevent requestFocus from firing repeatedly as tab key is held
-                      _tabbedRecently = true;
-                      Future.delayed(tabDelay, () => _tabbedRecently = false);
+                      _tabDelay.haveTabbedRecently();
                     }
                   },
                   child: TextFormField(
@@ -105,13 +104,12 @@ class _IntroInputState extends State<IntroInput> {
                     onKey: (key) {
                       RawKeyEventDataWeb kData = key.data;
                       if (kData.keyLabel == 'Tab' &&
-                          !_tabbedRecently &&
+                          !_tabDelay.tabbedRecently &&
                           _focusUpdater.locationFocus.hasFocus) {
                         FocusScope.of(context)
                             .requestFocus(_focusUpdater.saveFocus);
                         // prevent requestFocus from firing repeatedly as tab key is held
-                        _tabbedRecently = true;
-                        Future.delayed(tabDelay, () => _tabbedRecently = false);
+                        _tabDelay.haveTabbedRecently();
                       }
                     },
                     child: TextFormField(
@@ -154,14 +152,12 @@ class _IntroInputState extends State<IntroInput> {
                         onKey: (key) {
                           RawKeyEventDataWeb kData = key.data;
                           if (kData.keyLabel == 'Tab' &&
-                              !_tabbedRecently &&
+                              !_tabDelay.tabbedRecently &&
                               _focusUpdater.saveFocus.hasFocus) {
                             FocusScope.of(context)
                                 .requestFocus(_focusUpdater.nextWidgetFocus());
                             // prevent requestFocus from firing repeatedly as tab key is held
-                            _tabbedRecently = true;
-                            Future.delayed(
-                                tabDelay, () => _tabbedRecently = false);
+                            _tabDelay.haveTabbedRecently();
                           }
                           if (kData.keyLabel == 'Enter' &&
                               _focusUpdater.saveFocus.hasFocus) {
