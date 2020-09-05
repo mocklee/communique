@@ -4,7 +4,7 @@ import 'package:communique/landing/addIconPainter.dart';
 import 'package:flutter/material.dart';
 
 import './introCard/introCard.dart';
-import './repcard/repCard.dart';
+import './repCard/repCard.dart';
 
 class Landing extends StatefulWidget {
   Landing({Key key, this.title, this.subtitle}) : super(key: key);
