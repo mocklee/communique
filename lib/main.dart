@@ -1,4 +1,4 @@
-import 'package:communique/landing/business/inputUpdater.dart';
+import 'package:communique/landing/inputUpdater.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import './landing/landing.dart';
@@ -25,7 +25,6 @@ class Communique extends StatelessWidget {
               splashColor: Colors.teal[600]),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        // the meat
         home: new Landing(
           title: 'communique',
           subtitle: 'Write & share email templates!',
