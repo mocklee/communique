@@ -5,7 +5,7 @@ class HeroText extends StatefulWidget {
       {Key key,
       this.step1 = const [
         'Step 1:\n',
-        'Let the recepient know who you are! Fill in your details below.'
+        'Let the recepient know who you are! Prefill email templates below with salutations.'
       ],
       this.step2 = const [
         'Step 2:\n',

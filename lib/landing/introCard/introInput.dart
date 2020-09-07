@@ -23,8 +23,8 @@ class _IntroInputState extends State<IntroInput> {
       _inputUpdater.updateName(_name);
       _inputUpdater.updateLocation(_location);
 
-      Scaffold.of(context)
-          .showSnackBar(SnackBar(content: Text('Name & city saved!')));
+      Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text('Name & city saved in your browser session!')));
     }
   }
 
@@ -50,7 +50,7 @@ class _IntroInputState extends State<IntroInput> {
                 cursorColor: Colors.green[600],
                 textCapitalization: TextCapitalization.words,
                 decoration: InputDecoration(
-                  labelText: 'Your full name',
+                  labelText: 'Your formal name',
                   labelStyle: TextStyle(fontSize: 16),
                   errorStyle: TextStyle(fontSize: 11.5),
                   helperText: ' ',
@@ -79,10 +79,10 @@ class _IntroInputState extends State<IntroInput> {
                     cursorColor: Colors.green[600],
                     textCapitalization: TextCapitalization.words,
                     decoration: InputDecoration(
-                      labelText: 'City, state',
+                      labelText: 'Location (city, state)',
                       labelStyle: TextStyle(fontSize: 16),
                       errorStyle: TextStyle(fontSize: 11.5),
-                      helperText: 'This card stores data only on your device.',
+                      helperText: 'This card stores data only on your device. ',
                       helperStyle: TextStyle(
                           fontSize: 11.5, fontStyle: FontStyle.italic),
                       isDense: true,

@@ -101,7 +101,7 @@ class _RepInputState extends State<RepInput> {
                   cursorColor: Colors.green[600],
                   textCapitalization: TextCapitalization.words,
                   decoration: InputDecoration(
-                    labelText: 'City, state',
+                    labelText: 'Location (city, state)',
                     labelStyle: TextStyle(fontSize: 16),
                     errorStyle: TextStyle(fontSize: 11.5),
                     helperText: "Data retrieved from Google's Civic Data API.",
