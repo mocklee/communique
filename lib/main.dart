@@ -18,6 +18,7 @@ class Communique extends StatelessWidget {
         theme: ThemeData(
           primaryColor: Colors.teal,
           primarySwatch: Colors.teal,
+          // TODO: implement brightness as stateful
           brightness: Brightness.dark,
           floatingActionButtonTheme: FloatingActionButtonThemeData(
               backgroundColor: Colors.teal[200],

@@ -13,8 +13,8 @@ class RepCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
         child: SizedBox(
-            width: 300,
-            height: 400,
+            width: 350,
+            height: 450,
             child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -26,7 +26,7 @@ class RepCard extends StatelessWidget {
                       title: Text(repTitle,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 14,
+                            fontSize: 18,
                           ))),
                   Container(
                       padding: EdgeInsets.only(
@@ -39,7 +39,7 @@ class RepCard extends StatelessWidget {
                       child: Text(
                         repSubtitle,
                         style: TextStyle(
-                          fontSize: 11.5,
+                          fontSize: 13,
                           letterSpacing: 0.4,
                           height: 1.3,
                         ),

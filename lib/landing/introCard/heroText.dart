@@ -115,7 +115,7 @@ class _HeroTextState extends State<HeroText> {
                     TextSpan(
                         text: stepDescription,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 13,
                           fontStyle: FontStyle.italic,
                           letterSpacing: 0.4,
                         ))

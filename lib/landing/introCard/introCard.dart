@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:communique/landing/introCard/layouts/desktopCard.dart';
+import 'package:communique/landing/introCard/layouts/desktopIntro.dart';
 
 class IntroCard extends StatelessWidget {
   IntroCard({Key key}) : super(key: key);
@@ -9,9 +9,9 @@ class IntroCard extends StatelessWidget {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
       if (constraints.maxWidth > 1200) {
-        return DesktopCard();
+        return DesktopIntro();
       } else {
-        return DesktopCard();
+        return DesktopIntro();
       }
     });
   }

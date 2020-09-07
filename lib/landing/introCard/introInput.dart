@@ -23,8 +23,8 @@ class _IntroInputState extends State<IntroInput> {
       _inputUpdater.updateName(_name);
       _inputUpdater.updateLocation(_location);
 
-      Scaffold.of(context).showSnackBar(SnackBar(
-          content: Text('Name & city saved in your browser session!')));
+      Scaffold.of(context).showSnackBar(
+          SnackBar(content: Text('Name & city saved to your browser!')));
     }
   }
 
