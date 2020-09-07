@@ -8,7 +8,11 @@ class IntroCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      return DesktopCard();
+      if (constraints.maxWidth > 1200) {
+        return DesktopCard();
+      } else {
+        return DesktopCard();
+      }
     });
   }
 }

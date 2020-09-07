@@ -1,6 +1,7 @@
 library landing;
 
 import 'package:communique/landing/addIconPainter.dart';
+import 'package:communique/landing/loudestTags/loudestTags.dart';
 import 'package:flutter/material.dart';
 
 import './introCard/introCard.dart';
@@ -29,7 +30,7 @@ class _LandingState extends State<Landing> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(60.0), // here the desired height
+            preferredSize: Size.fromHeight(60.0),
             child: AppBar(
                 title: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -51,42 +52,53 @@ class _LandingState extends State<Landing> {
         body: LayoutBuilder(
             // BoxConstraints available for responsiveness
             builder: (BuildContext context, BoxConstraints constraints) {
-          return Column(children: <Widget>[
-            Container(
-                height: 375,
-                margin: EdgeInsets.all(10),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      new IntroCard(),
-                      new RepCard(),
-                      // TODO: partition width of intro/rep/tag evenly
-                    ])),
-            Container(
-                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                alignment: Alignment.bottomLeft,
-                child: Text.rich(
-                  TextSpan(
-                    text: 'Rising emails in ', // default text style
-                    style: TextStyle(fontSize: 32),
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'world',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 32)),
-                    ],
-                  ),
-                  textAlign: TextAlign.end,
-                )),
-            const Divider(
-              color: Colors.white,
-              height: 5,
-              thickness: 1,
-              indent: 18,
-              endIndent: 18,
-            ),
-          ]);
+          return Container(
+              alignment: Alignment.topCenter,
+              child: SizedBox(
+                  width: 1200,
+                  child: Column(children: <Widget>[
+                    Container(
+                        height: 375,
+                        margin: EdgeInsets.all(10),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Spacer(),
+                              new IntroCard(),
+                              Spacer(flex: 1),
+                              new RepCard(),
+                              Spacer(),
+                              new LoudestTags(),
+                              Spacer()
+                              // TODO: partition width of intro/rep/tag evenly
+                            ])),
+                    Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        alignment: Alignment.bottomLeft,
+                        child: Text.rich(
+                          TextSpan(
+                            text: 'Rising emails in ', // default text style
+                            style: TextStyle(fontSize: 24),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'world',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 24)),
+                            ],
+                          ),
+                          textAlign: TextAlign.end,
+                        )),
+                    const Divider(
+                      color: Colors.white,
+                      height: 5,
+                      thickness: 1,
+                      indent: 18,
+                      endIndent: 18,
+                    ),
+                  ])));
         }),
         floatingActionButton: FloatingActionButton(
           onPressed: _incrementCounter,

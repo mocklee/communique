@@ -13,7 +13,7 @@ class DesktopCard extends StatelessWidget {
     return Card(
         child: SizedBox(
             width: 300,
-            height: 400,
+            height: 450,
             child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
               ListTile(
                   contentPadding: EdgeInsets.symmetric(
