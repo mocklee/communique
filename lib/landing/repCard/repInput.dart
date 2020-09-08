@@ -76,7 +76,7 @@ class _RepInputState extends State<RepInput> {
                         style: TextStyle(fontStyle: FontStyle.italic),
                       )),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 13),
+                    padding: EdgeInsets.only(bottom: 16),
                     child: Container(
                       height: 40,
                       alignment: Alignment.center,
@@ -85,7 +85,7 @@ class _RepInputState extends State<RepInput> {
                   )
                 ]),
             SizedBox(
-                height: 65,
+                height: 70,
                 width: 260,
                 child: TextFormField(
                   onFieldSubmitted: (location) => {
@@ -104,11 +104,10 @@ class _RepInputState extends State<RepInput> {
                   decoration: InputDecoration(
                     labelText: 'Location (city, state)',
                     labelStyle: TextStyle(fontSize: 16),
-                    errorStyle: TextStyle(fontSize: 11.5),
+                    errorStyle: TextStyle(fontSize: 12),
                     helperText: "Data retrieved from Google's Civic Data API.",
                     helperStyle:
-                        TextStyle(fontSize: 11.5, fontStyle: FontStyle.italic),
-                    isDense: true,
+                        TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
                     contentPadding: EdgeInsets.only(bottom: 1),
                   ),
                   validator: (value) {
