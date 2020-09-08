@@ -36,54 +36,58 @@ class _IntroInputState extends State<IntroInput> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            TextFormField(
-              autocorrect: false,
-              textInputAction: TextInputAction.next,
-              onChanged: (value) => {
-                setState(() {
-                  _name = value;
-                  _fieldSubmitted = false;
-                })
-              },
-              cursorColor: Colors.green[600],
-              textCapitalization: TextCapitalization.words,
-              decoration: InputDecoration(
-                labelText: 'Your formal name',
-                labelStyle: TextStyle(fontSize: 16),
-                errorStyle: TextStyle(fontSize: 11.5),
-                helperText: ' ',
-                contentPadding: EdgeInsets.only(bottom: 1),
-              ),
-              validator: (value) {
-                return InputValidator.validateName(value);
-              },
-            ),
-            TextFormField(
-                onFieldSubmitted: (location) => {
-                      if (_fieldSubmitted == false)
-                        {_fieldSubmitted = true, _saveInfo()}
-                    },
-                textInputAction: TextInputAction.done,
-                onChanged: (value) => {
-                      setState(() {
-                        _location = value;
-                        _fieldSubmitted = false;
-                      })
-                    },
-                cursorColor: Colors.green[600],
-                textCapitalization: TextCapitalization.words,
-                decoration: InputDecoration(
-                  labelText: 'Location (city, state)',
-                  labelStyle: TextStyle(fontSize: 16),
-                  errorStyle: TextStyle(fontSize: 11.5),
-                  helperText: 'This card stores data only on your device. ',
-                  helperStyle:
-                      TextStyle(fontSize: 11.5, fontStyle: FontStyle.italic),
-                  contentPadding: EdgeInsets.only(bottom: 1),
-                ),
-                validator: (value) {
-                  return InputValidator.validateLocation(value);
-                }),
+            SizedBox(
+                height: 70,
+                child: TextFormField(
+                  autocorrect: false,
+                  textInputAction: TextInputAction.next,
+                  onChanged: (value) => {
+                    setState(() {
+                      _name = value;
+                      _fieldSubmitted = false;
+                    })
+                  },
+                  cursorColor: Colors.green[600],
+                  textCapitalization: TextCapitalization.words,
+                  decoration: InputDecoration(
+                    labelText: 'Your formal name',
+                    labelStyle: TextStyle(fontSize: 16),
+                    errorStyle: TextStyle(fontSize: 12),
+                    helperText: ' ',
+                    contentPadding: EdgeInsets.only(bottom: 1),
+                  ),
+                  validator: (value) {
+                    return InputValidator.validateName(value);
+                  },
+                )),
+            SizedBox(
+                height: 70,
+                child: TextFormField(
+                    onFieldSubmitted: (location) => {
+                          if (_fieldSubmitted == false)
+                            {_fieldSubmitted = true, _saveInfo()}
+                        },
+                    textInputAction: TextInputAction.done,
+                    onChanged: (value) => {
+                          setState(() {
+                            _location = value;
+                            _fieldSubmitted = false;
+                          })
+                        },
+                    cursorColor: Colors.green[600],
+                    textCapitalization: TextCapitalization.words,
+                    decoration: InputDecoration(
+                      labelText: 'Location (city, state)',
+                      labelStyle: TextStyle(fontSize: 16),
+                      errorStyle: TextStyle(fontSize: 12),
+                      helperText: 'This card stores data only on your device. ',
+                      helperStyle:
+                          TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
+                      contentPadding: EdgeInsets.only(bottom: 1),
+                    ),
+                    validator: (value) {
+                      return InputValidator.validateLocation(value);
+                    })),
             Container(
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                 alignment: Alignment.bottomRight,
