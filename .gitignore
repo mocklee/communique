@@ -1,6 +1,7 @@
 # Webapp only
 android/
 ios/
+config.js
 
 # Miscellaneous
 *.class
