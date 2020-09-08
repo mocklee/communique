@@ -1,6 +1,6 @@
 # **communique**
 
-**[work-in-progress]** 
+**[work-in-progress]**
 
 A web platform that enables sharing, browsing & generation of email message templates via `mailto` links.
 
@@ -8,13 +8,15 @@ A web platform that enables sharing, browsing & generation of email message temp
 
 ![communique mock image](./mockWIP.png)
 
-
 ## Stack
 
 - [Flutter](https://flutter.dev/)
 - [Firebase](https://firebase.google.com/)
 
 ## Running locally for development
+
+1. Install dependencies & ensure Chrome device is visible with the`flutter devices` command
+2. Run the app with `flutter run`; or use an IDE such as Visual Studio Code with the [official Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter), to debug & run.
 
 ### _Dependencies:_
 
