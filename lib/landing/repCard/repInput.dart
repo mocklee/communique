@@ -79,6 +79,7 @@ class _RepInputState extends State<RepInput> {
                     padding: EdgeInsets.only(bottom: 13),
                     child: Container(
                       height: 40,
+                      alignment: Alignment.center,
                       child: _buildChips(),
                     ),
                   )

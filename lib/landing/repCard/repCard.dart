@@ -7,7 +7,7 @@ class RepCard extends StatelessWidget {
   final String repTitle = 'Contact your representative.';
 
   final String repSubtitle =
-      'If your representative is not found— or you are outside the United States— use the plus button to draft an email template at the bottom right.';
+      'Make your voice heard by those in government! If a representative is not found, use the plus button to create an email template at the bottom right.';
 
   @override
   Widget build(BuildContext context) {

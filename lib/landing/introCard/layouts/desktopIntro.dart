@@ -32,7 +32,7 @@ class DesktopIntro extends StatelessWidget {
               Padding(
                   padding: EdgeInsets.only(
                     top: 20,
-                    bottom: 30,
+                    bottom: 36,
                     right: 25,
                     left: 25,
                   ),
