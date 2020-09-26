@@ -5,13 +5,13 @@ Future<void> addEmail(email) {
   final emails = FirebaseFirestore.instance.collection('emails');
   return emails.add({
     'anonymousID': email.anonymousID,
-    'causeSummary': email.causeSummary,
-    'body': email.emailBody,
-    'destination': [email.emailDestination],
-    'subject': email.subject,
-    'sentClickCount': 0,
     'tags': [email.tag],
+    'sentClickCount': 0,
     'title': email.title,
+    'causeSummary': email.causeSummary,
+    'subject': email.subject,
+    'destination': [email.emailDestination],
+    'body': email.emailBody,
   });
 }
 
