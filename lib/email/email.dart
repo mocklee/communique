@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:communique/email/moderation/moderationReport.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Email {
-  final String anonymousID;
+  final UserCredential anonymousID;
   final List<String> tags;
   final int sentClickCount;
   final String title;
