@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 import './introCard/introCard.dart';
 import './repCard/repCard.dart';
-import '../email/emailRelay.dart' as emailRelay;
+import '../email/firestoreRelay.dart' as firestoreRelay;
 
 class Landing extends StatefulWidget {
   final String title;
@@ -34,7 +34,8 @@ class _LandingState extends State<Landing> {
 
   void onLoad() {
     AnonymousFingerprint.create();
-    _currentSubscription = emailRelay.loadFromCollection(9).listen((event) {});
+    _currentSubscription =
+        firestoreRelay.loadFromCollection(9).listen((event) {});
   }
 
   @override

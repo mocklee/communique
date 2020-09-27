@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:communique/email/moderation/moderationReport.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+/// Email object that encapsulates what users can submit in regards to site content.
 class Email {
   final UserCredential anonymousID;
   final List<String> tags;

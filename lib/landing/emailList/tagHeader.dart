@@ -2,6 +2,7 @@ import 'package:communique/landing/emailList/emailListItem.dart';
 
 import 'package:flutter/material.dart';
 
+// `Rising emails` header object
 class TagHeader implements EmailListItem {
   Widget buildEmailCard(BuildContext context) => null;
 
