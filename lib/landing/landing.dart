@@ -23,7 +23,7 @@ class _LandingState extends State<Landing> {
   void initState() {
     super.initState();
 
-    // load anonymous fingerprint after page load
+    // sign in anonymously on page load
     WidgetsBinding.instance
         .addPostFrameCallback((_) => AnonymousFingerprint.create());
   }
