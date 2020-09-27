@@ -11,6 +11,7 @@ class IntroCard extends StatelessWidget {
       if (constraints.maxWidth > 1200) {
         return DesktopIntro();
       } else {
+        // TODO: implement responsiveness for IntroCard
         return DesktopIntro();
       }
     });

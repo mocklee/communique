@@ -1,8 +1,10 @@
 import 'package:communique/email/email.dart';
+import 'package:communique/landing/inputUpdater.dart';
 import 'package:flutter/material.dart';
 
 class DesktopEmail extends StatefulWidget {
   final Email currentEmail;
+
   DesktopEmail({Key key, this.currentEmail}) : super(key: key);
 
   @override
@@ -29,7 +31,24 @@ class _DesktopEmailState extends State<DesktopEmail> {
                         style: TextStyle(
                           fontSize: 20,
                         ))),
-                Row(mainAxisAlignment: MainAxisAlignment.start)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    InputUpdater.sentEmailReferences
+                            .contains(widget.currentEmail.reference)
+                        ? Icon(Icons.mark_email_read,
+                            size: 14.0,
+                            semanticLabel: 'You have already sent this email.')
+                        : Icon(
+                            Icons.email,
+                            size: 14.0,
+                            semanticLabel: 'You have not yet sent this email.',
+                          ),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 3.0)),
+                    Text(widget.currentEmail.sentClickCount.toString())
+                  ],
+                )
               ])),
     );
   }

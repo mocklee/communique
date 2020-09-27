@@ -11,6 +11,7 @@ class RepCard extends StatelessWidget {
       if (constraints.maxWidth > 1200) {
         return DesktopRep();
       } else {
+        // TODO: implement responsiveness for RepCard
         return DesktopRep();
       }
     });

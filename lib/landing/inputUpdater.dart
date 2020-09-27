@@ -8,7 +8,7 @@ class InputUpdater extends ChangeNotifier {
   static String name;
   static String location;
   static List<bool> repLevel;
-  static List<DocumentReference> sentEmails;
+  static List<DocumentReference> sentEmailReferences;
 
   void updateName(String userName) {
     window.localStorage['communiqueUserName'] = userName;
@@ -31,11 +31,14 @@ class InputUpdater extends ChangeNotifier {
 
   void updateSentEmailCache(DocumentReference emailReference) {
     if (window.localStorage.containsKey('communiqueSentEmailReferences')) {
-      sentEmails =
+      sentEmailReferences =
           jsonDecode(window.localStorage['communiqueSentEmailReferences']);
     }
-    sentEmails.add(emailReference);
+
+    sentEmailReferences.add(emailReference);
     window.localStorage['communiqueSentEmailReferences'] =
-        jsonEncode(sentEmails);
+        jsonEncode(sentEmailReferences);
+
+    notifyListeners();
   }
 }

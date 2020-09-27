@@ -11,6 +11,7 @@ class EmailCard implements EmailListItem {
       if (constraints.maxWidth > 1200) {
         return DesktopEmail();
       } else {
+        // TODO: implement responsiveness for EmailCard
         return DesktopEmail();
       }
     });
