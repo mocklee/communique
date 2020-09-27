@@ -1,5 +1,7 @@
 library landing;
 
+import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:communique/landing/addIconPainter.dart';
 import 'package:communique/landing/anonymousFingerprint.dart';
 import 'package:communique/landing/loudestTags/loudestTags.dart';
@@ -7,6 +9,7 @@ import 'package:flutter/material.dart';
 
 import './introCard/introCard.dart';
 import './repCard/repCard.dart';
+import '../email/emailRelay.dart' as emailRelay;
 
 class Landing extends StatefulWidget {
   final String title;
@@ -19,13 +22,25 @@ class Landing extends StatefulWidget {
 }
 
 class _LandingState extends State<Landing> {
+  StreamSubscription<QuerySnapshot> _currentSubscription;
+
   @override
   void initState() {
     super.initState();
 
     // sign in anonymously on page load
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => AnonymousFingerprint.create());
+    WidgetsBinding.instance.addPostFrameCallback((_) => onLoad());
+  }
+
+  void onLoad() {
+    AnonymousFingerprint.create();
+    _currentSubscription = emailRelay.loadFromCollection(9).listen((event) {});
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _currentSubscription?.cancel();
   }
 
   @override
