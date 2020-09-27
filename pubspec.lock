@@ -71,13 +71,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0-nullsafety"
-  fingerprintjs:
-    dependency: "direct main"
-    description:
-      name: fingerprintjs
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   firebase:
     dependency: transitive
     description:

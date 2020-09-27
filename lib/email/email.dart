@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:communique/email/moderationReport.dart';
+import 'package:communique/email/moderation/moderationReport.dart';
 
 class Email {
   final String anonymousID;
