@@ -1,17 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:communique/email/email.dart';
 
 //** Adds new email object to Firestore collection */
-Future<void> addEmail(email) {
+Future<void> addEmail(Email email) {
   final emails = FirebaseFirestore.instance.collection('emails');
   return emails.add({
     'anonymousID': email.anonymousID,
-    'tags': [email.tag],
-    'sentClickCount': 0,
+    'tags': email.tags,
     'title': email.title,
     'causeSummary': email.causeSummary,
     'subject': email.subject,
-    'destination': [email.emailDestination],
-    'body': email.emailBody,
+    'destination': email.destination,
+    'body': email.body,
   });
 }
 

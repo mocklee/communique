@@ -1,6 +1,7 @@
 library landing;
 
 import 'package:communique/landing/addIconPainter.dart';
+import 'package:communique/landing/anonymousFingerprint.dart';
 import 'package:communique/landing/loudestTags/loudestTags.dart';
 import 'package:flutter/material.dart';
 
@@ -8,22 +9,23 @@ import './introCard/introCard.dart';
 import './repCard/repCard.dart';
 
 class Landing extends StatefulWidget {
-  Landing({Key key, this.title, this.subtitle}) : super(key: key);
-
   final String title;
   final String subtitle;
+
+  Landing({Key key, this.title, this.subtitle}) : super(key: key);
 
   @override
   _LandingState createState() => _LandingState();
 }
 
 class _LandingState extends State<Landing> {
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values.
-    });
+  @override
+  void initState() {
+    super.initState();
+
+    // load anonymous fingerprint after page load
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => AnonymousFingerprint.create());
   }
 
   @override
@@ -101,7 +103,7 @@ class _LandingState extends State<Landing> {
                   ])));
         }),
         floatingActionButton: FloatingActionButton(
-          onPressed: _incrementCounter,
+          onPressed: null,
           tooltip: 'New email',
           child: CustomPaint(
             child: Container(),
