@@ -1,7 +1,9 @@
+import 'package:communique/cache/salutationsUpdater.dart';
 import 'package:communique/landing/inputValidator.dart';
-import 'package:communique/cache/cacheUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html';
 
 class IntroInput extends StatefulWidget {
   @override
@@ -11,17 +13,15 @@ class IntroInput extends StatefulWidget {
 class _IntroInputState extends State<IntroInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
-  final _cacheUpdater = CacheUpdater();
-
-  String _name, _location;
+  final _salutationsUpdater = SalutationsUpdater();
   bool _fieldSubmitted = false;
 
   void _saveInfo() {
     if (_formKey.currentState.validate()) {
       // update input values globally
       print("Name & city saved!");
-      _cacheUpdater.updateName(_name);
-      _cacheUpdater.updateLocation(_location);
+      _salutationsUpdater.update(_name);
+      _salutationsUpdater.updateLocation(_location);
 
       Scaffold.of(context).showSnackBar(
           SnackBar(content: Text('Name & city saved to your browser!')));

@@ -1,4 +1,4 @@
-import 'package:communique/cache/cacheUpdater.dart';
+import 'package:communique/cacheUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 
 import './introCard/introCard.dart';
 import './repCard/repCard.dart';
-import '../firestoreRelay.dart' as firestoreRelay;
 import 'loudestTags/loudestTags.dart';
 
 class Landing extends StatefulWidget {
@@ -22,8 +21,6 @@ class Landing extends StatefulWidget {
 }
 
 class _LandingState extends State<Landing> {
-  StreamSubscription<QuerySnapshot> _tagSubscription;
-
   @override
   void initState() {
     super.initState();
@@ -34,15 +31,6 @@ class _LandingState extends State<Landing> {
 
   void onLoad() {
     AnonymousFingerprint.create();
-    _tagSubscription = firestoreRelay
-        .loadFromCollection('tags', 'emailCount', true, 20)
-        .listen((event) {});
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _tagSubscription?.cancel();
   }
 
   @override
