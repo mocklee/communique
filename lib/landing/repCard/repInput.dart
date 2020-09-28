@@ -1,6 +1,5 @@
-import 'package:communique/cache/cacheUpdater.dart';
-import 'package:communique/cache/cacheUpdaters/repLevelUpdater.dart';
-import 'package:communique/cache/cacheUpdaters/salutationsUpdater.dart';
+import 'package:communique/cache/cacheUpdaters/repLevel.dart';
+import 'package:communique/cache/cacheUpdaters/salutations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -11,10 +10,10 @@ class RepInput extends StatefulWidget {
 
 class _RepInputState extends State<RepInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-  final _repLevelUpdater = RepLevelUpdater();
-  final _salutationsUpdater = SalutationsUpdater();
+  final _RepLevel = RepLevel();
+  final _Salutations = Salutations();
 
-  List<bool> _selectedIndex = [false, false, false, false];
+  List<bool> _selectedIndex = [];
   List<String> _options = ['City', 'County', 'State', 'Federal'];
 
   String _location;
@@ -23,7 +22,7 @@ class _RepInputState extends State<RepInput> {
   void _saveInfo() {
     if (_formKey.currentState.validate()) {
       // update input values globally
-      _salutationsUpdater.updateLocation(_location);
+      _Salutations.updateLocation(_location);
 
       // TODO: implement Google's Civic Data API & Flutter navigator
     }
@@ -33,6 +32,10 @@ class _RepInputState extends State<RepInput> {
     List<Widget> chips = new List();
 
     for (int i = 0; i < _options.length; i++) {
+      // add option as a selectable index
+      _selectedIndex.add(false);
+
+      // create option chip
       ChoiceChip choiceChip = ChoiceChip(
         selected: _selectedIndex[i],
         label: Text(_options[i], style: TextStyle(color: Colors.white)),
@@ -46,7 +49,7 @@ class _RepInputState extends State<RepInput> {
               _selectedIndex[i] = false;
             else
               _selectedIndex[i] = selected;
-            _repLevelUpdater.update(_selectedIndex);
+            _RepLevel.update(_selectedIndex);
           });
         },
       );

@@ -2,7 +2,7 @@ import 'package:communique/tag/tag.dart';
 
 import '../cacheUpdater.dart';
 
-class LoudestTagToBrowseUpdater extends CacheUpdater {
+class LoudestTagToBrowse extends CacheUpdater {
   static Tag tagToBrowse;
 
   @override

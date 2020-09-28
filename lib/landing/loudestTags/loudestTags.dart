@@ -31,7 +31,7 @@ class _LoudestTagsState extends State<LoudestTags> {
     _tagSubscription?.cancel();
   }
 
-  void _updateLoudestTags(QuerySnapshot snapshot) {
+  void _updateLoudestTags(QuerySnapshot snapshot) async {
     setState(() {
       _isLoading = false;
       _tags = firestoreRelay.getTagsFromQuery(snapshot);

@@ -1,6 +1,6 @@
 import 'package:communique/cache/cacheUpdater.dart';
 
-class RepLevelUpdater extends CacheUpdater {
+class RepLevel extends CacheUpdater {
   List<bool> repLevel;
 
   @override

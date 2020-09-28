@@ -1,6 +1,6 @@
 import 'package:communique/cache/cacheUpdater.dart';
 
-class SalutationsUpdater extends CacheUpdater {
+class Salutations extends CacheUpdater {
   static String name;
   static String location;
 

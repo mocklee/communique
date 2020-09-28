@@ -1,4 +1,4 @@
-import 'package:communique/cache/cacheUpdaters/sentEmailsUpdater.dart';
+import 'package:communique/cache/cacheUpdaters/sentEmails.dart';
 import 'package:communique/email/email.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +35,7 @@ class _DesktopEmailState extends State<DesktopEmail> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    SentEmailUpdater.emailReferences
+                    SentEmail.emailReferences
                             .contains(widget.currentEmail.reference)
                         ? Icon(Icons.mark_email_read,
                             size: 14.0,

@@ -1,6 +1,6 @@
 library landing;
 
-import 'package:communique/cache/cacheUpdaters/sentEmailsUpdater.dart';
+import 'package:communique/cache/cacheUpdaters/sentEmails.dart';
 import 'package:communique/landing/addIconPainter.dart';
 import 'package:communique/landing/anonymousFingerprint.dart';
 import 'package:flutter/material.dart';
@@ -20,17 +20,13 @@ class Landing extends StatefulWidget {
 }
 
 class _LandingState extends State<Landing> {
-  @override
-  void initState() {
-    super.initState();
-
-    // sign in anonymously on page load
+  _LandingState() {
     WidgetsBinding.instance.addPostFrameCallback((_) => onLoad());
   }
 
   void onLoad() {
     AnonymousFingerprint.create();
-    SentEmailUpdater().initEmailReferences();
+    SentEmail().initEmailReferences();
   }
 
   @override
