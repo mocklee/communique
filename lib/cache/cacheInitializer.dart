@@ -6,5 +6,5 @@ import 'package:flutter/foundation.dart';
 class CacheInitializer extends ValueNotifier {
   Storage localStorage = window.localStorage;
 
-  CacheInitializer({this.localStorage, value}) : super(value);
+  CacheInitializer({localStorage, value}) : super(value);
 }

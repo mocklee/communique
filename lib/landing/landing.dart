@@ -1,7 +1,5 @@
 library landing;
 
-import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:communique/landing/addIconPainter.dart';
 import 'package:communique/landing/anonymousFingerprint.dart';
 import 'package:flutter/material.dart';

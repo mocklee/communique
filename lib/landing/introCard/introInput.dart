@@ -48,6 +48,7 @@ class _IntroInputState extends State<IntroInput> {
             SizedBox(
                 height: 70,
                 child: TextFormField(
+                  initialValue: (_name != null) ? _name : '',
                   autocorrect: false,
                   textInputAction: TextInputAction.next,
                   onChanged: (value) => {
@@ -72,6 +73,7 @@ class _IntroInputState extends State<IntroInput> {
             SizedBox(
                 height: 70,
                 child: TextFormField(
+                    initialValue: (_location != null) ? _location : '',
                     onFieldSubmitted: (location) => {
                           if (_fieldSubmitted == false)
                             {_fieldSubmitted = true, _saveInfo()}

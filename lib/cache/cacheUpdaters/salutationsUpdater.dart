@@ -4,7 +4,7 @@ class SalutationsUpdater extends CacheUpdater {
   static String name;
   static String location;
 
-  void initSalutations() {
+  Future<void> initSalutations() async {
     if (localStorage.containsKey('communiqueUserName') &&
         localStorage.containsKey('communiqueUserLocation')) {
       name = localStorage['communiqueUserName'];
