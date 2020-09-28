@@ -1,4 +1,4 @@
-import 'package:communique/cache/sentEmailUpdater.dart';
+import 'package:communique/cache/cacheUpdaters/sentEmailsUpdater.dart';
 import 'package:communique/email/email.dart';
 import 'package:flutter/material.dart';
 

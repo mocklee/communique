@@ -1,13 +1,8 @@
-import 'package:flutter/foundation.dart';
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html';
+import 'package:communique/cache/cacheInitializer.dart';
 
 /// Caching interface for Communique.
 /// Data may be cached either using static variables in the app instance,
 /// or in the browser itself using `localStorage`.
-abstract class CacheUpdater extends ValueNotifier {
-  Storage localStorage = window.localStorage;
-  CacheUpdater({this.localStorage, value}) : super(value);
-
+abstract class CacheUpdater extends CacheInitializer {
   void update(dynamic value);
 }

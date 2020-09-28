@@ -1,4 +1,5 @@
-import 'package:communique/cacheUpdater.dart';
+import 'package:communique/cache/cacheUpdater.dart';
+import 'package:communique/cache/cacheUpdaters/loudestTagToBrowseUpdater.dart';
 import 'package:communique/tag/tag.dart';
 import 'package:flutter/material.dart';
 
@@ -12,17 +13,18 @@ class DesktopLoudest extends StatefulWidget {
 }
 
 class _DesktopLoudestState extends State<DesktopLoudest> {
-  final _cacheUpdater = CacheUpdater();
-
-  List<bool> _selectedIndex;
+  final _loudestTagToBrowseUpdater = LoudestTagToBrowseUpdater();
 
   Widget _buildChips() {
     List<Widget> chips = new List();
+    Tag loudestTag;
 
     for (int i = 0; i < widget.loudestTags.length; i++) {
-      _selectedIndex[i] = false;
+      loudestTag = widget.loudestTags[i].emailCount > loudestTag.emailCount
+          ? widget.loudestTags[i]
+          : loudestTag;
       ChoiceChip choiceChip = ChoiceChip(
-        selected: _selectedIndex[i],
+        selected: widget.loudestTags[i] == loudestTag ? true : false,
         label: Text(widget.loudestTags[i].name,
             style: TextStyle(color: Colors.white)),
         elevation: 4,
@@ -31,11 +33,7 @@ class _DesktopLoudestState extends State<DesktopLoudest> {
         selectedColor: Colors.teal[300],
         onSelected: (bool selected) {
           setState(() {
-            if (_selectedIndex[i] == selected)
-              _selectedIndex[i] = false;
-            else
-              _selectedIndex[i] = selected;
-            _cacheUpdater.updateRepLevel(_selectedIndex);
+            _loudestTagToBrowseUpdater.update(widget.loudestTags[i]);
           });
         },
       );

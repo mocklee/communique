@@ -1,4 +1,6 @@
-import 'package:communique/cacheUpdater.dart';
+import 'package:communique/cache/cacheUpdater.dart';
+import 'package:communique/cache/cacheUpdaters/repLevelUpdater.dart';
+import 'package:communique/cache/cacheUpdaters/salutationsUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -9,7 +11,8 @@ class RepInput extends StatefulWidget {
 
 class _RepInputState extends State<RepInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-  final _cacheUpdater = CacheUpdater();
+  final _repLevelUpdater = RepLevelUpdater();
+  final _salutationsUpdater = SalutationsUpdater();
 
   List<bool> _selectedIndex = [false, false, false, false];
   List<String> _options = ['City', 'County', 'State', 'Federal'];
@@ -20,7 +23,7 @@ class _RepInputState extends State<RepInput> {
   void _saveInfo() {
     if (_formKey.currentState.validate()) {
       // update input values globally
-      _cacheUpdater.updateLocation(_location);
+      _salutationsUpdater.updateLocation(_location);
 
       // TODO: implement Google's Civic Data API & Flutter navigator
     }
@@ -43,7 +46,7 @@ class _RepInputState extends State<RepInput> {
               _selectedIndex[i] = false;
             else
               _selectedIndex[i] = selected;
-            _cacheUpdater.updateRepLevel(_selectedIndex);
+            _repLevelUpdater.update(_selectedIndex);
           });
         },
       );

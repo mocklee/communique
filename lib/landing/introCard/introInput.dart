@@ -1,4 +1,4 @@
-import 'package:communique/cache/salutationsUpdater.dart';
+import 'package:communique/cache/cacheUpdaters/salutationsUpdater.dart';
 import 'package:communique/landing/inputValidator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,7 +14,16 @@ class _IntroInputState extends State<IntroInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
   final _salutationsUpdater = SalutationsUpdater();
+  String _name, _location;
   bool _fieldSubmitted = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _salutationsUpdater.initSalutations();
+    _name = SalutationsUpdater.name;
+    _location = SalutationsUpdater.location;
+  }
 
   void _saveInfo() {
     if (_formKey.currentState.validate()) {
