@@ -1,5 +1,5 @@
 import 'package:communique/landing/inputValidator.dart';
-import 'package:communique/landing/inputUpdater.dart';
+import 'package:communique/cache/cacheUpdater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -11,7 +11,7 @@ class IntroInput extends StatefulWidget {
 class _IntroInputState extends State<IntroInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
-  final _inputUpdater = InputUpdater();
+  final _cacheUpdater = CacheUpdater();
 
   String _name, _location;
   bool _fieldSubmitted = false;
@@ -20,8 +20,8 @@ class _IntroInputState extends State<IntroInput> {
     if (_formKey.currentState.validate()) {
       // update input values globally
       print("Name & city saved!");
-      _inputUpdater.updateName(_name);
-      _inputUpdater.updateLocation(_location);
+      _cacheUpdater.updateName(_name);
+      _cacheUpdater.updateLocation(_location);
 
       Scaffold.of(context).showSnackBar(
           SnackBar(content: Text('Name & city saved to your browser!')));

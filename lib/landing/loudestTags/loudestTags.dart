@@ -1,35 +1,53 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-class LoudestTags extends StatelessWidget {
-  const LoudestTags({Key key}) : super(key: key);
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:communique/tag/tag.dart';
+import 'package:flutter/material.dart';
+import 'package:communique/landing/loudestTags/layouts/desktopLoudest.dart';
+import '../../firestoreRelay.dart' as firestoreRelay;
+
+class LoudestTags extends StatefulWidget {
+  LoudestTags({Key key}) : super(key: key);
+
+  @override
+  _LoudestTagsState createState() => _LoudestTagsState();
+}
+
+class _LoudestTagsState extends State<LoudestTags> {
+  // TODO: implement loading for loudestTags
+  bool _isLoading = true;
+  StreamSubscription<QuerySnapshot> _tagSubscription;
+  List<Tag> _tags;
+
+  _LoudestTagsState() {
+    _tagSubscription = firestoreRelay
+        .loadFromCollection('tags', 'emailCount', true, 20)
+        .listen(_updateLoudestTags);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _tagSubscription?.cancel();
+  }
+
+  void _updateLoudestTags(QuerySnapshot snapshot) {
+    setState(() {
+      _isLoading = false;
+      _tags = firestoreRelay.getTagsFromQuery(snapshot);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SizedBox(
-          width: 300,
-          height: 450,
-          child: Column(
-            children: <Widget>[
-              Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  alignment: Alignment.bottomRight,
-                  child: Text.rich(
-                    TextSpan(
-                      text: 'Loudest topics ', // default text style
-                      style: TextStyle(fontSize: 24),
-                    ),
-                    textAlign: TextAlign.end,
-                  )),
-              const Divider(
-                color: Colors.white,
-                height: 5,
-                thickness: 1,
-                indent: 18,
-                endIndent: 18,
-              ),
-            ],
-          )),
-    );
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      if (constraints.maxWidth > 1200) {
+        return DesktopLoudest(_tags);
+      } else {
+        // TODO: implement responsiveness for loudestTags
+        return DesktopLoudest(_tags);
+      }
+    });
   }
 }

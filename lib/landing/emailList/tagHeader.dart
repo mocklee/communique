@@ -1,9 +1,13 @@
+import 'package:communique/tag/tag.dart';
+import 'package:flutter/material.dart';
 import 'package:communique/landing/emailList/emailListItem.dart';
 
-import 'package:flutter/material.dart';
-
-// `Rising emails` header object
+/// Rising emails header object
 class TagHeader implements EmailListItem {
+  final Tag currentTag;
+
+  TagHeader(this.currentTag);
+
   Widget buildEmailCard(BuildContext context) => null;
 
   Widget buildTagHeader(BuildContext context) {
@@ -13,7 +17,7 @@ class TagHeader implements EmailListItem {
           alignment: Alignment.bottomLeft,
           child: Text.rich(
             TextSpan(
-              text: 'Rising emails in ', // default text style
+              text: 'Rising emails in ' + currentTag.name, // default text style
               style: TextStyle(fontSize: 24),
               children: <TextSpan>[
                 TextSpan(

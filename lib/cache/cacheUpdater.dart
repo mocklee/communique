@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'dart:html';
 import 'dart:convert';
 
-class InputUpdater extends ChangeNotifier {
+class CacheUpdater extends ChangeNotifier {
   static String name;
   static String location;
   static List<bool> repLevel;

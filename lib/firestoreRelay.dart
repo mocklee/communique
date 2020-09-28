@@ -32,7 +32,7 @@ List<Tag> getTagsFromQuery(QuerySnapshot snapshot) {
 
 /// Returns stream of ordered QuerySnapshots, of given collection
 Stream<QuerySnapshot> loadFromCollection(
-    int limit, String collection, String ordinalField, bool descendingStatus) {
+    String collection, String ordinalField, bool descendingStatus, int limit) {
   return FirebaseFirestore.instance
       .collection(collection)
       .orderBy(ordinalField, descending: descendingStatus)

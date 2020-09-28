@@ -1,11 +1,11 @@
-import 'package:communique/landing/inputUpdater.dart';
+import 'package:communique/cache/cacheUpdater.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import './landing/landing.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
-    create: (context) => InputUpdater(),
+    create: (context) => CacheUpdater(),
     child: Communique(),
   ));
 }
