@@ -1,5 +1,6 @@
 library landing;
 
+import 'package:communique/cache/cacheUpdaters/sentEmailsUpdater.dart';
 import 'package:communique/landing/addIconPainter.dart';
 import 'package:communique/landing/anonymousFingerprint.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,7 @@ class _LandingState extends State<Landing> {
 
   void onLoad() {
     AnonymousFingerprint.create();
+    SentEmailUpdater().initEmailReferences();
   }
 
   @override
