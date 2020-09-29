@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 
 class DesktopLoudest extends StatefulWidget {
   final List<Tag> loudestTags;
+  final LoudestTagToBrowse tagCache;
 
-  DesktopLoudest(this.loudestTags, {Key key}) : super(key: key);
+  DesktopLoudest(this.loudestTags, this.tagCache, {Key key}) : super(key: key);
 
   @override
   _DesktopLoudestState createState() => _DesktopLoudestState();
@@ -32,7 +33,7 @@ class _DesktopLoudestState extends State<DesktopLoudest> {
         selectedColor: Colors.teal[300],
         onSelected: (bool selected) {
           setState(() {
-            LoudestTagToBrowse().update(widget.loudestTags[i]);
+            widget.tagCache.update(widget.loudestTags[i]);
           });
         },
       );
