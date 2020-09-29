@@ -19,6 +19,9 @@ class TagHeader extends StatelessWidget {
                 style: TextStyle(fontSize: 24),
                 children: <InlineSpan>[
                   WidgetSpan(
+                      child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 6))),
+                  WidgetSpan(
                       child: IntrinsicWidth(
                           child: TextField(
                     controller: selectedTag,
@@ -26,12 +29,14 @@ class TagHeader extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                   ))),
                   WidgetSpan(
-                      child: IconButton(
-                          onPressed: () => {null},
-                          padding: new EdgeInsets.all(0.0),
-                          tooltip: 'Find rep',
-                          icon: Icon(Icons.search, size: 30),
-                          splashColor: Colors.teal[600]))
+                      child: Padding(
+                          padding: EdgeInsets.only(left: 12),
+                          child: IconButton(
+                              onPressed: () => {null},
+                              padding: new EdgeInsets.all(0.0),
+                              tooltip: 'Find rep',
+                              icon: Icon(Icons.search, size: 30),
+                              splashColor: Colors.teal[600])))
                 ]),
             textAlign: TextAlign.end,
           )),
