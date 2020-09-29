@@ -1,27 +1,23 @@
-import 'package:communique/tag/tag.dart';
 import 'package:flutter/material.dart';
-import 'package:communique/landing/emailList/emailListItem.dart';
 
 /// Rising emails header object
-class TagHeader implements EmailListItem {
-  final Tag currentTag;
+class TagHeader extends StatelessWidget {
+  final String currentTagName;
+  const TagHeader(this.currentTagName, {Key key}) : super(key: key);
 
-  TagHeader(this.currentTag);
-
-  Widget buildEmailCard(BuildContext context) => null;
-
-  Widget buildTagHeader(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     return (Column(children: <Widget>[
       Container(
           margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           alignment: Alignment.bottomLeft,
           child: Text.rich(
             TextSpan(
-              text: 'Rising emails in ' + currentTag.name, // default text style
+              text: 'Rising emails in ', // default text style
               style: TextStyle(fontSize: 24),
               children: <TextSpan>[
                 TextSpan(
-                    text: 'world',
+                    text: currentTagName,
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
               ],

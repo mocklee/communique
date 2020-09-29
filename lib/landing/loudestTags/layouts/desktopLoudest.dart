@@ -16,7 +16,7 @@ class _DesktopLoudestState extends State<DesktopLoudest> {
     List<Widget> chips = new List();
 
     while (widget.loudestTags == null) {
-      return null;
+      return CircularProgressIndicator();
     }
 
     for (int i = 0; i < widget.loudestTags.length; i++) {

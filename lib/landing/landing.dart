@@ -1,8 +1,14 @@
 library landing;
 
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:communique/cache/cacheUpdaters/sentEmails.dart';
 import 'package:communique/landing/addIconPainter.dart';
 import 'package:communique/landing/anonymousFingerprint.dart';
+import 'package:communique/landing/emailList/emailList.dart';
+import 'package:communique/tag/tag.dart';
+import '../firestoreRelay.dart' as firestoreRelay;
 import 'package:flutter/material.dart';
 
 import './introCard/introCard.dart';
@@ -20,6 +26,9 @@ class Landing extends StatefulWidget {
 }
 
 class _LandingState extends State<Landing> {
+  StreamSubscription<QuerySnapshot> _tagSubscription;
+  List<Tag> loudestTags;
+
   _LandingState() {
     WidgetsBinding.instance.addPostFrameCallback((_) => onLoad());
   }
@@ -27,6 +36,19 @@ class _LandingState extends State<Landing> {
   void onLoad() {
     AnonymousFingerprint.create();
     SentEmail().initEmailReferences();
+    _tagSubscription = firestoreRelay
+        .loadFromCollection('tags', 'emailCount', true, 20)
+        .listen((newSnapshot) {
+      setState(() {
+        loudestTags = firestoreRelay.getTagsFromQuery(newSnapshot);
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _tagSubscription?.cancel();
   }
 
   @override
@@ -72,7 +94,7 @@ class _LandingState extends State<Landing> {
                               Spacer(flex: 1),
                               new RepCard(),
                               Spacer(),
-                              new LoudestTags(),
+                              new LoudestTags(loudestTags),
                               Spacer()
                               // TODO: partition width of intro/rep/tag evenly
                             ])),
@@ -80,27 +102,7 @@ class _LandingState extends State<Landing> {
                         margin:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                         alignment: Alignment.bottomLeft,
-                        child: Text.rich(
-                          TextSpan(
-                            text: 'Rising emails in ', // default text style
-                            style: TextStyle(fontSize: 24),
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: 'world',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24)),
-                            ],
-                          ),
-                          textAlign: TextAlign.end,
-                        )),
-                    const Divider(
-                      color: Colors.white,
-                      height: 5,
-                      thickness: 1,
-                      indent: 18,
-                      endIndent: 18,
-                    ),
+                        child: EmailList())
                   ])));
         }),
         floatingActionButton: FloatingActionButton(

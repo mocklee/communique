@@ -1,23 +1,26 @@
 import 'package:communique/email/email.dart';
 import 'package:flutter/material.dart';
-import 'package:communique/landing/emailList/emailListItem.dart';
 import 'package:communique/landing/emailList/emailCard/layouts/desktopEmail.dart';
 
-class EmailCard implements EmailListItem {
+class EmailCard extends StatefulWidget {
   final Email currentEmail;
-  EmailCard(this.currentEmail);
+  EmailCard(this.currentEmail, {Key key}) : super(key: key);
 
-  Widget buildTagHeader(BuildContext context) => null;
+  @override
+  _EmailCardState createState() => _EmailCardState();
+}
 
-  Widget buildEmailCard(BuildContext context) {
-    return LayoutBuilder(
+class _EmailCardState extends State<EmailCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(child: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
       if (constraints.maxWidth > 1200) {
-        return DesktopEmail(this.currentEmail);
+        return DesktopEmail(widget.currentEmail);
       } else {
         // TODO: implement responsiveness for EmailCard
-        return DesktopEmail(this.currentEmail);
+        return DesktopEmail(widget.currentEmail);
       }
-    });
+    }));
   }
 }
