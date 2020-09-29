@@ -3,25 +3,36 @@ import 'package:flutter/material.dart';
 /// Rising emails header object
 class TagHeader extends StatelessWidget {
   final String currentTagName;
-  const TagHeader(this.currentTagName, {Key key}) : super(key: key);
+  TagHeader(this.currentTagName, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController selectedTag = TextEditingController();
+    selectedTag.text = currentTagName;
     return (Column(children: <Widget>[
       Container(
           margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           alignment: Alignment.bottomLeft,
           child: Text.rich(
             TextSpan(
-              text: 'Rising emails in ', // default text style
-              style: TextStyle(fontSize: 24),
-              children: <TextSpan>[
-                TextSpan(
-                    text: currentTagName,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-              ],
-            ),
+                text: 'Rising emails in ', // default text style
+                style: TextStyle(fontSize: 24),
+                children: <InlineSpan>[
+                  WidgetSpan(
+                      child: IntrinsicWidth(
+                          child: TextField(
+                    controller: selectedTag,
+                    decoration: InputDecoration(),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  ))),
+                  WidgetSpan(
+                      child: IconButton(
+                          onPressed: () => {null},
+                          padding: new EdgeInsets.all(0.0),
+                          tooltip: 'Find rep',
+                          icon: Icon(Icons.search, size: 30),
+                          splashColor: Colors.teal[600]))
+                ]),
             textAlign: TextAlign.end,
           )),
       Divider(
