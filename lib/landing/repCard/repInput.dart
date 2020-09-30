@@ -76,7 +76,7 @@ class _RepInputState extends State<RepInput> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                      padding: EdgeInsets.only(left: 10, bottom: 5),
+                      padding: EdgeInsets.only(left: 10, bottom: 6),
                       child: Text(
                         'Choose level of government…',
                         style: TextStyle(fontStyle: FontStyle.italic),
@@ -132,7 +132,7 @@ class _RepInputState extends State<RepInput> {
                     child: IconButton(
                       padding: new EdgeInsets.all(0.0),
                       tooltip: 'Find rep',
-                      icon: Icon(Icons.search, size: 30),
+                      icon: Icon(Icons.arrow_forward, size: 30),
                       splashColor: Colors.teal[600],
                       onPressed: () =>
                           {if (_fieldSubmitted == false) _saveInfo()},
