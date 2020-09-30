@@ -86,7 +86,7 @@ class _IntroInputState extends State<IntroInput> {
                     cursorColor: Colors.green[600],
                     textCapitalization: TextCapitalization.words,
                     decoration: InputDecoration(
-                      labelText: 'Location (city, state)',
+                      labelText: 'Location',
                       labelStyle: TextStyle(fontSize: 16),
                       errorStyle: TextStyle(fontSize: 12),
                       helperText: 'This card stores data only on your device. ',
