@@ -39,3 +39,19 @@ Stream<QuerySnapshot> loadFromCollection(
       .limit(limit)
       .snapshots();
 }
+
+/// Returns stream of filtered & ordered QuerySnapshots.
+Stream<QuerySnapshot> loadFromFilteredCollection(
+    String collection,
+    String ordinalField,
+    bool descendingStatus,
+    int limit,
+    String filteredField,
+    String comparisonOperator,
+    dynamic equalityCondition) {
+  return FirebaseFirestore.instance
+      .collection(collection)
+      .where(filteredField, isEqualTo: equalityCondition)
+      .orderBy(ordinalField, descending: descendingStatus)
+      .snapshots();
+}
