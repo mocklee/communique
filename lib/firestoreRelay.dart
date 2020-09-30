@@ -45,13 +45,11 @@ Stream<QuerySnapshot> loadFromFilteredCollection(
     String collection,
     String ordinalField,
     bool descendingStatus,
-    int limit,
     String filteredField,
-    String comparisonOperator,
     dynamic equalityCondition) {
   return FirebaseFirestore.instance
       .collection(collection)
-      .where(filteredField, isEqualTo: equalityCondition)
+      .where(filteredField, arrayContains: equalityCondition)
       .orderBy(ordinalField, descending: descendingStatus)
       .snapshots();
 }

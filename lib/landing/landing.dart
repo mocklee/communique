@@ -29,9 +29,9 @@ class Landing extends StatefulWidget {
 
 class _LandingState extends State<Landing> {
   StreamSubscription<QuerySnapshot> _tagSubscription;
-  List<Tag> loudestTags;
-  LoudestTagToBrowse tagCache = new LoudestTagToBrowse();
-  Tag tagToBrowse;
+  List<Tag> _loudestTags;
+  LoudestTagToBrowse _tagCache = new LoudestTagToBrowse();
+  Tag _tagToBrowse;
 
   _LandingState() {
     WidgetsBinding.instance.addPostFrameCallback((_) => onLoad());
@@ -45,19 +45,19 @@ class _LandingState extends State<Landing> {
         .listen((newSnapshot) {
       // set the loudest tag as browsing default
       setState(() {
-        loudestTags = firestoreRelay.getTagsFromQuery(newSnapshot);
+        _loudestTags = firestoreRelay.getTagsFromQuery(newSnapshot);
         Tag currentLoudestTag = new Tag('default', 0);
-        for (int i = 0; i < loudestTags.length; i++) {
+        for (int i = 0; i < _loudestTags.length; i++) {
           currentLoudestTag =
-              loudestTags[i].emailCount > currentLoudestTag.emailCount
-                  ? loudestTags[i]
+              _loudestTags[i].emailCount > currentLoudestTag.emailCount
+                  ? _loudestTags[i]
                   : currentLoudestTag;
         }
-        tagToBrowse = currentLoudestTag;
+        _tagToBrowse = currentLoudestTag;
       });
     });
-    tagCache.addListener(() => setState(() {
-          tagToBrowse = LoudestTagToBrowse.tagToBrowse;
+    _tagCache.addListener(() => setState(() {
+          _tagToBrowse = LoudestTagToBrowse.tagToBrowse;
         }));
   }
 
@@ -110,7 +110,7 @@ class _LandingState extends State<Landing> {
                               Spacer(flex: 1),
                               new RepCard(),
                               Spacer(),
-                              new LoudestTags(loudestTags, tagCache),
+                              new LoudestTags(loudestTags, _tagCache),
                               Spacer()
                               // TODO: partition width of intro/rep/tag evenly
                             ])),
@@ -118,7 +118,7 @@ class _LandingState extends State<Landing> {
                         margin:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                         alignment: Alignment.bottomLeft,
-                        child: EmailList(tagToBrowse))
+                        child: EmailList(_tagToBrowse))
                   ])));
         }),
         floatingActionButton: FloatingActionButton(

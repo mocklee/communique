@@ -1,10 +1,12 @@
+import 'package:communique/landing/emailList/emailCard/emailCard.dart';
 import 'package:communique/landing/emailList/tagHeader/tagHeader.dart';
 import 'package:communique/tag/tag.dart';
 import 'package:flutter/material.dart';
 
 class DesktopList extends StatefulWidget {
   final Tag currentTag;
-  DesktopList(this.currentTag, {Key key}) : super(key: key);
+  final List<EmailCard> emailCards;
+  DesktopList(this.currentTag, this.emailCards, {Key key}) : super(key: key);
 
   @override
   _DesktopListState createState() => _DesktopListState();
@@ -18,6 +20,11 @@ class _DesktopListState extends State<DesktopList> {
     }
 
     return (SizedBox(
-        child: Column(children: <Widget>[TagHeader(widget.currentTag.name)])));
+        child: Column(children: <Widget>[
+      TagHeader(widget.currentTag.name),
+      SizedBox(
+        child: // TODO: write builder method for emailCard list
+      )
+    ])));
   }
 }
