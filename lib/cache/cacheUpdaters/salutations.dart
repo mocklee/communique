@@ -20,6 +20,11 @@ class Salutations extends CacheUpdater {
     notifyListeners();
   }
 
+  @override
+  dynamic read() {
+    return [name, location];
+  }
+
   void updateLocation(String userLocation) {
     localStorage['communiqueUserLocation'] = userLocation;
 

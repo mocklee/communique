@@ -8,4 +8,9 @@ class RepLevel extends CacheUpdater {
     repLevel = userSelectedLevels;
     notifyListeners();
   }
+
+  @override
+  dynamic read() {
+    return repLevel;
+  }
 }

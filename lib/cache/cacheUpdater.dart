@@ -5,4 +5,5 @@ import 'package:communique/cache/cacheInitializer.dart';
 /// or in the browser itself using `localStorage`.
 abstract class CacheUpdater extends CacheInitializer {
   void update(dynamic value);
+  dynamic read();
 }

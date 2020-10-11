@@ -10,4 +10,9 @@ class LoudestTagToBrowse extends CacheUpdater {
     tagToBrowse = tag;
     this.notifyListeners();
   }
+
+  @override
+  dynamic read() {
+    return tagToBrowse;
+  }
 }

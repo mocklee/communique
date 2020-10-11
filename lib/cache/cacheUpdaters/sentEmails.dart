@@ -20,4 +20,9 @@ class SentEmail extends CacheUpdater {
 
     notifyListeners();
   }
+
+  @override
+  dynamic read() {
+    return emailReferences;
+  }
 }

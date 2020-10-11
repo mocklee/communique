@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:communique/cache/cacheUpdaters/loudestTagToBrowse.dart';
 import 'package:communique/email/email.dart';
 import 'package:communique/landing/emailList/emailCard/emailCard.dart';
 import 'package:communique/tag/tag.dart';
@@ -10,8 +11,8 @@ import 'layouts/desktopList.dart';
 import '../../firestoreRelay.dart' as firestoreRelay;
 
 class EmailList extends StatefulWidget {
-  final Tag tagToBrowse;
-  EmailList(this.tagToBrowse, {Key key}) : super(key: key);
+  final LoudestTagToBrowse loudestTagCache;
+  EmailList(this.loudestTagCache, {Key key}) : super(key: key);
 
   @override
   _EmailListState createState() => _EmailListState();
@@ -21,15 +22,19 @@ class _EmailListState extends State<EmailList> {
   StreamSubscription<QuerySnapshot> _filteredEmailSubscription;
   List<Email> _emails;
   List<EmailCard> _emailCards = [];
+  Tag tagToBrowse;
 
   _EmailListState() {
-    onLoad();
+    WidgetsBinding.instance.addPostFrameCallback((_) => onLoad());
   }
 
   void onLoad() {
+    widget.loudestTagCache.addListener(() => setState(() {
+          tagToBrowse = widget.loudestTagCache.read();
+        }));
     _filteredEmailSubscription = firestoreRelay
         .loadFromFilteredCollection(
-            'emails', 'sentClickCount', true, 'tags', widget.tagToBrowse)
+            'emails', 'sentClickCount', true, 'tags', tagToBrowse)
         .listen((newSnapshot) {
       List<Email> newEmails = firestoreRelay.getEmailsFromQuery(newSnapshot);
 
@@ -53,13 +58,17 @@ class _EmailListState extends State<EmailList> {
 
   @override
   Widget build(BuildContext context) {
+    while (widget.loudestTagCache.read() == null) {
+      return CircularProgressIndicator();
+    }
+
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
       if (constraints.maxWidth > 1200) {
-        return DesktopList(widget.tagToBrowse, _emailCards);
+        return DesktopList(tagToBrowse, _emailCards);
       } else {
         // TODO: implement responsiveness for IntroCard
-        return DesktopList(widget.tagToBrowse, _emailCards);
+        return DesktopList(tagToBrowse, _emailCards);
       }
     });
   }

@@ -22,9 +22,8 @@ class _DesktopListState extends State<DesktopList> {
     return (SizedBox(
         child: Column(children: <Widget>[
       TagHeader(widget.currentTag.name),
-      SizedBox(
-        child: // TODO: write builder method for emailCard list
-      )
+      SizedBox(child: null // TODO: write builder method for emailCard list
+          )
     ])));
   }
 }

@@ -30,8 +30,7 @@ class Landing extends StatefulWidget {
 class _LandingState extends State<Landing> {
   StreamSubscription<QuerySnapshot> _tagSubscription;
   List<Tag> _loudestTags;
-  LoudestTagToBrowse _tagCache = new LoudestTagToBrowse();
-  Tag _tagToBrowse;
+  LoudestTagToBrowse _loudestTagCache = new LoudestTagToBrowse();
 
   _LandingState() {
     WidgetsBinding.instance.addPostFrameCallback((_) => onLoad());
@@ -53,12 +52,9 @@ class _LandingState extends State<Landing> {
                   ? _loudestTags[i]
                   : currentLoudestTag;
         }
-        _tagToBrowse = currentLoudestTag;
+        _loudestTagCache.update(currentLoudestTag);
       });
     });
-    _tagCache.addListener(() => setState(() {
-          _tagToBrowse = LoudestTagToBrowse.tagToBrowse;
-        }));
   }
 
   @override
@@ -110,7 +106,7 @@ class _LandingState extends State<Landing> {
                               Spacer(flex: 1),
                               new RepCard(),
                               Spacer(),
-                              new LoudestTags(loudestTags, _tagCache),
+                              new LoudestTags(_loudestTags, _loudestTagCache),
                               Spacer()
                               // TODO: partition width of intro/rep/tag evenly
                             ])),
@@ -118,7 +114,7 @@ class _LandingState extends State<Landing> {
                         margin:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                         alignment: Alignment.bottomLeft,
-                        child: EmailList(_tagToBrowse))
+                        child: EmailList(_loudestTagCache))
                   ])));
         }),
         floatingActionButton: FloatingActionButton(
