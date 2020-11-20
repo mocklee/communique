@@ -2,8 +2,8 @@
 
 **[work-in-progress]**
 A web platform that enables sharing, browsing & generation of email message templates via `mailto` links.
-
-[Figma mock (still WIP)](https://www.figma.com/file/RcjBRpAkK7W0aDx0J9XVGQ/communique?node-id=26495%3A29379)
+[commun.cc](https://commun.cc)
+[Figma mock](https://www.figma.com/file/RcjBRpAkK7W0aDx0J9XVGQ/communique?node-id=26495%3A29379)
 
 ![communique mock image](./mockWIP.png)
 
