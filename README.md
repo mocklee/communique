@@ -16,7 +16,7 @@ A web platform that enables sharing, browsing & generation of email message temp
 
 1. Install dependencies & ensure Chrome browser is visible with the `flutter devices` command
 2. Run the app with `flutter run -d chrome`
-   i. or use Visual Studio Code with the [official Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) to debug & run
+  - or use Visual Studio Code with the [official Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) to debug & run
 
 ### _Dependencies:_
 
