@@ -7,16 +7,16 @@ class SentEmail extends CacheUpdater {
   static List<DocumentReference> emailReferences;
 
   void initEmailReferences() {
-    if (localStorage.containsKey('communiqueSentEmailReferences')) {
+    if (localStorage.containsKey('communiquéSentEmailReferences')) {
       emailReferences =
-          jsonDecode(localStorage['communiqueSentEmailReferences']);
+          jsonDecode(localStorage['communiquéSentEmailReferences']);
     }
   }
 
   @override
   void update(dynamic emailReference) {
     emailReferences.add(emailReference);
-    localStorage['communiqueSentEmailReferences'] = jsonEncode(emailReferences);
+    localStorage['communiquéSentEmailReferences'] = jsonEncode(emailReferences);
 
     notifyListeners();
   }

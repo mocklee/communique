@@ -13,12 +13,12 @@ class IntroInput extends StatefulWidget {
 class _IntroInputState extends State<IntroInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
-  final _Salutations = Salutations();
+  final _salutations = Salutations();
   String _name, _location;
   bool _fieldSubmitted = false;
 
   _IntroInputState() {
-    _Salutations.initSalutations();
+    _salutations.initSalutations();
     _name = Salutations.name;
     _location = Salutations.location;
   }
@@ -27,8 +27,8 @@ class _IntroInputState extends State<IntroInput> {
     if (_formKey.currentState.validate()) {
       // update input values globally
       print("Name & city saved!");
-      _Salutations.update(_name);
-      _Salutations.updateLocation(_location);
+      _salutations.update(_name);
+      _salutations.updateLocation(_location);
 
       Scaffold.of(context).showSnackBar(
           SnackBar(content: Text('Name & city saved to your browser!')));

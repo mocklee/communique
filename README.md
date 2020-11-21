@@ -1,14 +1,13 @@
-# **communique**
+# **communiqué**
 
 **[work-in-progress]**
 A web platform that enables sharing, browsing & generation of email message templates via `mailto` links.
 
 [commun.cc](https://commun.cc)
 
+[Figma mock](https://www.figma.com/file/RcjBRpAkK7W0aDx0J9XVGQ/communiqué?node-id=26495%3A29379)
 
-[Figma mock](https://www.figma.com/file/RcjBRpAkK7W0aDx0J9XVGQ/communique?node-id=26495%3A29379)
-
-![communique mock image](./mockWIP.png)
+![communiqué mock image](./mockWIP.png)
 
 ## Stack
 
@@ -19,6 +18,7 @@ A web platform that enables sharing, browsing & generation of email message temp
 
 1. Install dependencies & ensure Chrome browser is visible with the `flutter devices` command
 2. Run the app with `flutter run -d chrome`
+
   - or use Visual Studio Code with the [official Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) to debug & run
 
 ### _Dependencies:_

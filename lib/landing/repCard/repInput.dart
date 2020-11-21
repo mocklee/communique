@@ -10,8 +10,8 @@ class RepInput extends StatefulWidget {
 
 class _RepInputState extends State<RepInput> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-  final _RepLevel = RepLevel();
-  final _Salutations = Salutations();
+  final _repLevel = RepLevel();
+  final _salutations = Salutations();
 
   List<bool> _selectedIndex = [];
   List<String> _options = ['City', 'County', 'State', 'Federal'];
@@ -22,7 +22,7 @@ class _RepInputState extends State<RepInput> {
   void _saveInfo() {
     if (_formKey.currentState.validate()) {
       // update input values globally
-      _Salutations.updateLocation(_location);
+      _salutations.updateLocation(_location);
 
       // TODO: implement Google's Civic Data API & Flutter navigator
     }
@@ -49,7 +49,7 @@ class _RepInputState extends State<RepInput> {
               _selectedIndex[i] = false;
             else
               _selectedIndex[i] = selected;
-            _RepLevel.update(_selectedIndex);
+            _repLevel.update(_selectedIndex);
           });
         },
       );

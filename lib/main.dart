@@ -14,7 +14,7 @@ class Communique extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'communique',
+        title: 'communiqué',
         theme: ThemeData(
           primaryColor: Colors.teal,
           primarySwatch: Colors.teal,
@@ -27,7 +27,7 @@ class Communique extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: new Landing(
-          title: 'communique',
+          title: 'communiqué',
           subtitle: 'Write & share email templates!',
         ));
   }
