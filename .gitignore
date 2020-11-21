@@ -1,5 +1,6 @@
 # Webapp only
 android/
+.firebase/
 ios/
 config.js
 
@@ -8,6 +9,7 @@ config.js
 *.log
 *.pyc
 *.swp
+.dccache
 .DS_Store
 .atom/
 .buildlog/
