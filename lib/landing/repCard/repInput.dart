@@ -1,5 +1,5 @@
-import 'package:communique/cache/cacheUpdaters/repLevel.dart';
-import 'package:communique/cache/cacheUpdaters/salutations.dart';
+import 'package:communique/data/cache/cacheUpdaters/repLevel.dart';
+import 'package:communique/data/cache/cacheUpdaters/salutations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -76,7 +76,7 @@ class _RepInputState extends State<RepInput> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                      padding: EdgeInsets.only(left: 10, bottom: 6),
+                      padding: EdgeInsets.only(left: 12, bottom: 6),
                       child: Text(
                         'Choose level of government…',
                         style: TextStyle(fontStyle: FontStyle.italic),

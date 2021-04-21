@@ -1,31 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:communique/email/moderation/moderationReport.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 /// Email object that encapsulates what users can submit in regards to site content.
 class Email {
   final UserCredential anonymousID;
   final List<String> tags;
-  final int sentClickCount;
   final String title;
   final String causeSummary;
   final String subject;
   final List<String> destination;
   final String body;
-  final List<ModerationReport> reports;
   final DocumentReference reference;
+  int sentClickCount;
 
   Email(
       {this.anonymousID,
       this.tags,
       this.title,
       this.causeSummary,
+      this.sentClickCount,
       this.subject,
       this.destination,
       this.body})
-      : sentClickCount = 0,
-        reports = [],
-        reference = null;
+      : reference = null;
 
   Email.fromSnapshot(DocumentSnapshot snapshot)
       : assert(snapshot != null),
@@ -37,6 +34,5 @@ class Email {
         subject = snapshot.data()['subject'],
         destination = snapshot.data()['destination'],
         body = snapshot.data()['body'],
-        reports = snapshot.data()['reports'],
         reference = snapshot.reference;
 }

@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../cacheUpdater.dart';
 
-class SentEmail extends CacheUpdater {
+class SentEmails extends CacheUpdater {
   static List<DocumentReference> emailReferences;
 
   void initEmailReferences() {

@@ -1,6 +1,6 @@
-import 'package:communique/landing/emailList/emailCard/emailCard.dart';
+import 'package:communique/landing/emailCard/emailCard.dart';
 import 'package:communique/landing/emailList/tagHeader/tagHeader.dart';
-import 'package:communique/tag/tag.dart';
+import 'package:communique/model/tag.dart';
 import 'package:flutter/material.dart';
 
 class DesktopList extends StatefulWidget {

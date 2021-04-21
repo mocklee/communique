@@ -1,6 +1,6 @@
-import 'package:communique/email/email.dart';
+import 'package:communique/model/email.dart';
 import 'package:flutter/material.dart';
-import 'package:communique/landing/emailList/emailCard/layouts/desktopEmail.dart';
+import 'package:communique/landing/emailCard/layouts/desktopEmail.dart';
 
 class EmailCard extends StatefulWidget {
   final Email currentEmail;

@@ -1,4 +1,4 @@
-import 'package:communique/cache/cacheUpdaters/salutations.dart';
+import 'package:communique/data/cache/cacheUpdaters/salutations.dart';
 import 'package:communique/landing/inputValidator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,7 +30,7 @@ class _IntroInputState extends State<IntroInput> {
       _salutations.update(_name);
       _salutations.updateLocation(_location);
 
-      Scaffold.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Name & city saved to your browser!')));
     }
   }
@@ -58,7 +58,7 @@ class _IntroInputState extends State<IntroInput> {
                   cursorColor: Colors.green[600],
                   textCapitalization: TextCapitalization.words,
                   decoration: InputDecoration(
-                    labelText: 'Your formal name',
+                    labelText: 'Formal name',
                     labelStyle: TextStyle(fontSize: 16),
                     errorStyle: TextStyle(fontSize: 12),
                     helperText: ' ',
@@ -98,7 +98,7 @@ class _IntroInputState extends State<IntroInput> {
                       return InputValidator.validateLocation(value);
                     })),
             Container(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                padding: EdgeInsets.symmetric(vertical: 9, horizontal: 0),
                 alignment: Alignment.bottomRight,
                 child: SizedBox(
                     height: 30,

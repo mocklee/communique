@@ -1,4 +1,4 @@
-import 'package:communique/tag/tag.dart';
+import 'package:communique/model/tag.dart';
 
 import '../cacheUpdater.dart';
 

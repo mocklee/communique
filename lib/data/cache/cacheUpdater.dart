@@ -1,4 +1,4 @@
-import 'package:communique/cache/cacheInitializer.dart';
+import 'package:communique/data/cache/cacheInitializer.dart';
 
 /// Caching interface for Communiqué.
 /// Data may be cached either using static variables in the app instance,

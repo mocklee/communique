@@ -1,4 +1,4 @@
-import 'package:communique/cache/cacheInitializer.dart';
+import 'package:communique/data/cache/cacheInitializer.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import './landing/landing.dart';
@@ -18,7 +18,6 @@ class Communique extends StatelessWidget {
         theme: ThemeData(
           primaryColor: Colors.teal,
           primarySwatch: Colors.teal,
-          // TODO: implement brightness as stateful
           brightness: Brightness.dark,
           floatingActionButtonTheme: FloatingActionButtonThemeData(
               backgroundColor: Colors.teal[200],

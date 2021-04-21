@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:communique/cache/cacheUpdaters/loudestTagToBrowse.dart';
-import 'package:communique/email/email.dart';
-import 'package:communique/landing/emailList/emailCard/emailCard.dart';
-import 'package:communique/tag/tag.dart';
+import 'package:communique/data/cache/cacheUpdaters/loudestTagToBrowse.dart';
+import 'package:communique/model/email.dart';
+import 'package:communique/landing/emailCard/emailCard.dart';
+import 'package:communique/model/tag.dart';
 import 'package:flutter/material.dart';
 
 import 'layouts/desktopList.dart';

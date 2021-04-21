@@ -7,7 +7,7 @@ class DesktopRep extends StatelessWidget {
   final String repTitle = 'Contact your representative.';
 
   final String repSubtitle =
-      'Make your voice heard by those in government! If a representative is not found, use the plus button to create an email template at the bottom right.';
+      'Make your voice heard by those in government! If a representative is not found, use the plus button at the bottom right to create an email template.';
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class DesktopRep extends StatelessWidget {
                           ))),
                   Container(
                       padding: EdgeInsets.only(
-                        top: 35,
+                        top: 25,
                         bottom: 28,
                         right: 20,
                         left: 20,

@@ -6,7 +6,6 @@ class DesktopIntro extends StatelessWidget {
   const DesktopIntro({Key key}) : super(key: key);
 
   final String introTitle = 'Let the collective voice rise.';
-  final String introSubtitle = 'Find the words to support your cause';
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +24,10 @@ class DesktopIntro extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       )),
-                  subtitle: Text(introSubtitle,
-                      style: TextStyle(
-                        fontSize: 13,
-                      ))),
+                  ),
               Padding(
                   padding: EdgeInsets.only(
-                    top: 20,
+                    top: 31,
                     bottom: 36,
                     right: 25,
                     left: 25,
@@ -42,7 +38,7 @@ class DesktopIntro extends StatelessWidget {
                     child: new HeroText(),
                   )),
               SizedBox(
-                width: 260,
+                width: 275,
                 child: IntroInput(),
               )
             ])));

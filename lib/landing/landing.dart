@@ -3,13 +3,13 @@ library landing;
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:communique/cache/cacheUpdaters/loudestTagToBrowse.dart';
+import 'package:communique/data/cache/cacheUpdaters/loudestTagToBrowse.dart';
 
-import 'package:communique/cache/cacheUpdaters/sentEmails.dart';
+import 'package:communique/data/cache/cacheUpdaters/sentEmails.dart';
 import 'package:communique/landing/addIconPainter.dart';
-import 'package:communique/landing/anonymousFingerprint.dart';
+import 'package:communique/data/anonymousFingerprint.dart';
 import 'package:communique/landing/emailList/emailList.dart';
-import 'package:communique/tag/tag.dart';
+import 'package:communique/model/tag.dart';
 import '../firestoreRelay.dart' as firestoreRelay;
 import 'package:flutter/material.dart';
 
@@ -38,7 +38,7 @@ class _LandingState extends State<Landing> {
 
   void onLoad() {
     AnonymousFingerprint.create();
-    SentEmail().initEmailReferences();
+    SentEmails().initEmailReferences();
     _tagSubscription = firestoreRelay
         .loadFromCollection('tags', 'emailCount', true, 20)
         .listen((newSnapshot) {
@@ -75,7 +75,7 @@ class _LandingState extends State<Landing> {
                     children: <Widget>[
                   Text(widget.title,
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                          TextStyle(fontFamily: 'Archivo', fontWeight: FontWeight.bold, fontSize: 24, letterSpacing: 0.8)),
                   Visibility(
                       visible: true,
                       child: Text(
@@ -96,7 +96,7 @@ class _LandingState extends State<Landing> {
                   child: Column(children: <Widget>[
                     Container(
                         height: 375,
-                        margin: EdgeInsets.all(10),
+                        margin: EdgeInsets.all(25),
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,7 +108,7 @@ class _LandingState extends State<Landing> {
                               Spacer(),
                               new LoudestTags(_loudestTags, _loudestTagCache),
                               Spacer()
-                              // TODO: partition width of intro/rep/tag evenly
+                              // TODO: partition width of intro/rep/tag responsively
                             ])),
                     Container(
                         margin:

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:communique/email/email.dart';
-import 'package:communique/tag/tag.dart';
+import 'package:communique/model/email.dart';
+import 'package:communique/model/tag.dart';
 
 /// Adds new email object to Firestore collection
 Future<void> addEmail(Email email) {

@@ -1,5 +1,5 @@
-import 'package:communique/cache/cacheUpdaters/loudestTagToBrowse.dart';
-import 'package:communique/tag/tag.dart';
+import 'package:communique/data/cache/cacheUpdaters/loudestTagToBrowse.dart';
+import 'package:communique/model/tag.dart';
 import 'package:flutter/material.dart';
 import 'package:communique/landing/loudestTags/layouts/desktopLoudest.dart';
 
