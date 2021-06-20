@@ -1,7 +1,7 @@
-import 'package:communique/data/cache/cacheInitializer.dart';
+import 'package:communique/service/cache/cacheInitializer.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import './landing/landing.dart';
+import './ui/landing.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(

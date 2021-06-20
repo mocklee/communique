@@ -3,11 +3,7 @@
 **[work-in-progress]**
 A web platform that enables sharing, browsing & generation of email message templates via `mailto` links.
 
-[commun.cc](https://commun.cc)
-
-[Figma mock](https://www.figma.com/file/RcjBRpAkK7W0aDx0J9XVGQ/communiqué?node-id=26495%3A29379)
-
-![communiqué mock image](./mockWIP.png)
+[communi.email](https://communi.email)
 
 ## Stack
 

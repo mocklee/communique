@@ -5,7 +5,7 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:communique/landing/inputValidator.dart';
+import 'package:communique/service/inputValidator.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
